@@ -41,22 +41,22 @@
     <nav>
         <div class="container py-5">
             <div class="row">
-                <div class="col-3" style="color: white; font-size: 32px;"><p style=" margin: 0;">Venta</p></div>
+                <div class="col-3" style="color: white; font-size: 32px;"><a href=""><img src="img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
                 <div class="col-6">
                     <div class="input-group">
-                        <select class="form-select input-group-der">
+                        <select class="form-select input-group-der input-group-color">
                             <option value="1" selected>All</option>
                             <option value="2">Capacitores</option>
                             <option value="3">Resistencias</option>
                         </select>
                         <input  type="text" class="form-control" placeholder="Buscar..." aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-secondary input-group-izq" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li><i class="bi bi-heart icon-nav"></i></li>
-                        <li><i class="bi bi-basket3 icon-nav"></i>></li>
+                        <li><a href=""><span><i class="bi bi-heart icon-nav"></i></span></a></li>
+                        <li><a href=""><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
                     </ul>
                 </div>
             </div>
