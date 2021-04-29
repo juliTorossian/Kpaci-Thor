@@ -19,6 +19,9 @@ header{
 .icon-header{
     color: #29a19c;
 }
+.icon-header-cuenta:hover{
+    color: #29a19c;
+}
 .selection-header{
     background-color: #393e46;
     color: black;
@@ -59,8 +62,10 @@ nav .icon-nav{
 }
 .input-group-color{
     color: black;
-    background-color: #29a19c;
     border: none;
+}
+.input-group-color button{
+    background-color: #29a19c;
 }
 footer{
     position: absolute;
@@ -75,4 +80,11 @@ footer .bajo{
     background-color: #393e46;
     display: flex;
     color: #29a19c;
+}
+.dropdown-toggle::after {
+    display:none;
+}
+.dropdown-menu[data-bs-popper]{
+    left: inherit;
+    margin-top: -10px;
 }

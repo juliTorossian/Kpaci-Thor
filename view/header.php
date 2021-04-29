@@ -15,11 +15,11 @@
   <body>
     
     <header class="navbar navbar-expand-lg">
-        <div class="container-fluid">
+        <div class="container-fluid align-items-center">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item item-header"><i class="bi bi-whatsapp icon-header"></i><a href=""> (+54) 294-4900241</a></li>
-                <li class="nav-item item-header"><i class="bi bi-envelope-fill icon-header"></i><a href=""> mail@gmail.com</a></li>
-                <li class="nav-item item-header"><i class="bi bi-geo-fill icon-header"></i><a href=""> urquiza 4750 7F</a></li>
+                <li class="nav-item item-header"><i class="bi bi-whatsapp icon-header"     ></i><a href=""> (+54) 294-4900241</a></li>
+                <li class="nav-item item-header"><i class="bi bi-envelope-fill icon-header"></i><a href=""> mail@gmail.com   </a></li>
+                <li class="nav-item item-header"><i class="bi bi-geo-fill icon-header"     ></i><a href=""> urquiza 4750 7F  </a></li>
             </ul>
             <form class="d-flex">
                 <select class="form-select selection-header">
@@ -28,23 +28,23 @@
                     <option value="3">UY$</option>
                 </select>
             </form>
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
-                Cuenta
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
-                <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-            </ul>
+            <div>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta  <i class="bi bi-person-circle icon-header-cuenta"></i></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="#" class="dropdown-item">Mi Cuenta</a>
+                    <a href="#" class="dropdown-item">Cerrar Sesion</a>
+                </div>
             </div>
         </div>
     </header>
+    
     <nav>
         <div class="container py-5">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-3" style="color: white; font-size: 32px;"><a href=""><img src="img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
                 <div class="col-6">
-                    <div class="input-group">
-                        <select class="form-select input-group-der input-group-color">
+                    <div class="input-group input-group-color">
+                        <select class="form-select input-group-der">
                             <option value="1" selected>All</option>
                             <option value="2">Capacitores</option>
                             <option value="3">Resistencias</option>
