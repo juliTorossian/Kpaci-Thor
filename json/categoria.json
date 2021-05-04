@@ -1,0 +1,22 @@
+[
+    {
+        "cateId": 1,
+        "cateNombre": "Sensores"
+    },
+    {
+        "cateId": 2,
+        "cateNombre": "Leds"
+    },
+    {
+        "cateId": 3,
+        "cateNombre": "Resistencias"
+    },
+    {
+        "cateId": 4,
+        "cateNombre": "Capacitores"
+    },
+    {
+        "cateId": 5,
+        "cateNombre": "Herramientas"
+    }
+]

@@ -1,3 +1,9 @@
+<?php 
+
+    //session_start();
+
+?>
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -8,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
 
     <title>Kpaci-Thor</title>
   </head>
@@ -31,8 +37,12 @@
             <div>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta  <i class="bi bi-person-circle icon-header-cuenta"></i></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a href="#" class="dropdown-item">Mi Cuenta</a>
-                    <a href="#" class="dropdown-item">Cerrar Sesion</a>
+                    <?php if (isset($_SESSION["username"])){?>
+                        <a href="#" class="dropdown-item">Mi Cuenta</a>
+                        <a href="index.php?controller=usuario&action=cerrarsesion" class="dropdown-item">Cerrar Sesion</a>
+                    <?php }else{?>
+                        <a href="index.php?controller=usuario&action=login" class="dropdown-item">Iniciar Sesion</a>
+                    <?php }?>
                 </div>
             </div>
         </div>
@@ -41,7 +51,7 @@
     <nav>
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-3" style="color: white; font-size: 32px;"><a href=""><img src="img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
+                <div class="col-3" style="color: white; font-size: 32px;"><a href=""><img src="./public/img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
                 <div class="col-6">
                     <div class="input-group input-group-color">
                         <select class="form-select input-group-der">
@@ -55,8 +65,8 @@
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li><a href=""><span><i class="bi bi-heart icon-nav"></i></span></a></li>
                         <li><a href=""><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
+                        <li><a href=""><span><i class="bi bi-heart icon-nav"></i></span></a></li>
                     </ul>
                 </div>
             </div>
