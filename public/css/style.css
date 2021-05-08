@@ -54,7 +54,10 @@ nav .icon-nav{
 .input-group-der{
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    max-width: 130px !important;
+    max-width: 150px !important;
+}
+footer .input-group-der{
+    max-width: 550px !important;
 }
 .input-group-izq{
     border-top-right-radius: 20px;
@@ -68,18 +71,41 @@ nav .icon-nav{
     background-color: #29a19c;
 }
 footer{
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
     width: 100%;
 }
 footer .sup{
     background-color: #222831;
     border-top: 5px solid #29a19c;
 }
+footer .sup p{
+    text-align: center;
+    font-size: 17px;
+    color: white;
+}
+footer .sup ul{
+    padding: 0;
+    margin-bottom: 16px;
+    text-align: center;
+    color: #29a19c;
+}
+footer .icon-fondo{
+    position: absolute;
+    left: 5%;
+    top: 2%;
+    color: #393e46;
+    font-size: 180px;
+    transform: rotate(25deg);
+}
 footer .bajo{
+    z-index: 2;
     background-color: #393e46;
     display: flex;
     color: #29a19c;
+}
+footer .bajo img{
+    width: 100%;
 }
 .dropdown-toggle::after {
     display:none;
@@ -90,6 +116,9 @@ footer .bajo{
 }
 
 
+.body-login{
+    background-color: #393e46;
+}
 .content{
     margin-top: 10%;
     width: 33%;
@@ -102,7 +131,7 @@ footer .bajo{
     box-shadow: 4px 4px 8px #000000;
 
     padding: 20px;
-    background-color: #F4F4F4;
+    background-color: #393e46;
 }
 .content img{
     width: 80%;
@@ -114,6 +143,7 @@ footer .bajo{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 .form_main_register{
     display: flex;
@@ -132,6 +162,10 @@ footer .bajo{
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
+    color: white;
+}
+.form_add:hover{
+    color: #258BB5;
 }
 .form_submit{
     display: block;
@@ -140,17 +174,17 @@ footer .bajo{
     margin-top: 25px;
 
     border-radius: 6px;
-    background-color: #258BB5;
-    border: 2px solid #258BB5;
-    color: #FFFFFF;
+    background-color: #29a19c;
+    border: 2px solid #29a19c;
+    color: black;
     font-size: 18px;
     padding: 8px;
     cursor: pointer;
 }
 .form_submit:hover{
-    background-color: #FFFFFF;
-    border: 2px solid #258BB5;
-    color: #258BB5;
+    background-color: lightgray;
+    border: 2px solid #29a19c;
+    color: #29a19c;
 }
 .msgError{
     text-align: left;
@@ -160,4 +194,18 @@ footer .bajo{
     background-color: #c81912;
     border: 2px solid black;
     border-radius: 10px;
+}
+
+#centrador{
+    position: relative;
+}
+
+#imagen{
+    position: absolute;
+    width: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }

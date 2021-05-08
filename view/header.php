@@ -56,8 +56,13 @@
                     <div class="input-group input-group-color">
                         <select class="form-select input-group-der">
                             <option value="1" selected>All</option>
-                            <option value="2">Capacitores</option>
-                            <option value="3">Resistencias</option>
+                        <?php
+                            foreach ($a_categoria as $key => $value) {
+                            $nombreCat = $value['cateNombre'];
+                            $valueCat  = $value['cateId'];
+                        ?>
+                            <option value="<?php echo($valueCat);?>"><?php echo($nombreCat);?></option>
+                        <?php } ?>
                         </select>
                         <input  type="text" class="form-control" placeholder="Buscar..." aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <button class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
@@ -72,4 +77,3 @@
             </div>
         </div>
     </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

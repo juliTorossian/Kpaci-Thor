@@ -1,26 +1,72 @@
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./public/css/style.css">
-    
+
     <footer>
-
-        <div class="sup">
-            <ul style="margin: 0;">
-                <li><i class="bi bi-credit-card"></i></li>
-                <li><i class="bi bi-wallet"></i></li>
-                <li><i class="bi bi-cash"></i></li>
-            </ul>
+        <div class="container-fluid">
+            <div class="row sup pt-3 px-5">
+                <div class="col-4 p-4">
+                    <p style="font-size: 28px;">Suscribite para estar al dia!</p>
+                    <div class="input-group input-group-color" style="z-index: 2;">
+                        <input  type="text" class="form-control input-group-der" placeholder="mail@mail.com" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <button class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"> <i class="bi bi-envelope-fill"></i> Suscribirse</button>
+                    </div>
+                    <!--<div class="icon-fondo">
+                        <i class="bi bi-envelope"></i>
+                    </div>-->
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-4">
+                            <p>CATEGORIAS</p>
+                            <ul>
+                                <li>OFERTAS</li>
+                                <li>CATE1</li>
+                                <li>CATE2</li>
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <ul>
+                                <li>
+                                    <p>INFO</p>
+                                    <ul>
+                                        <li>Contacto</li>
+                                        <li>Envios</li>
+                                        <li>terminos y condiciones</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <ul>
+                                <li>
+                                    <p>CUENTA</p>
+                                    <ul>
+                                        <li>Mi Cuenta</li>
+                                        <li>Favoritos</li>
+                                        <li>Seguimiento de Envios</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-4 bajo">
+                <div class="col-4">
+                    <ul>
+                        <li>contacto</li>
+                        <li>falta</li>
+                        <li>completar</li>
+                    </ul>
+                </div>
+                <div class="col-4 p-2">
+                    <img src="./public/img/formas_pago_footer.png" alt="formas de pago">
+                </div>
+                <div class="col-4" id="centrador">
+                    <img src="./public/img/mercadopago-vertical-logo.png" alt="mercado pago logo" style="width: 110px;" id="imagen">
+                </div>
+            </div>
         </div>
-        <div class="bajo">
-            <ul>
-                <li><i class="bi bi-credit-card"></i></li>
-                <li><i class="bi bi-wallet"></i></li>
-                <li><i class="bi bi-cash"></i></li>
-            </ul>
-        </div>
-
+        
     </footer>
 
 
