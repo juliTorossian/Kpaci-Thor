@@ -1,11 +1,11 @@
 <?php
 
-    class UsuarioMOD{
+    class UsuarioDAO{
 
         public static $FILE = './json/usuarios.json';
 
         public static function existeUsuario($usuario, $pass){
-            $content    = file_get_contents(UsuarioMOD::$FILE);
+            $content    = file_get_contents(UsuarioDAO::$FILE);
             $a_usuarios = json_decode($content, true);
 
             $return = false;
@@ -19,7 +19,7 @@
         }
 
         public static function crearUsuario($usuario, $pass){
-            $a_usuarios = json_decode(file_get_contents(UsuarioMOD::$FILE), true);
+            $a_usuarios = json_decode(file_get_contents(UsuarioDAO::$FILE), true);
 
             $usuario = array(
                 'user'=>$usuario,
@@ -27,11 +27,11 @@
             );
             array_push($a_usuarios, $usuario);
             $j_usuario = json_encode($a_usuarios);
-            file_put_contents(UsuarioMOD::$FILE, $j_usuario);
+            file_put_contents(UsuarioDAO::$FILE, $j_usuario);
         }
 
         public static function usuarioOcupado($usuario){
-            $content = file_get_contents(UsuarioMOD::$FILE);
+            $content = file_get_contents(UsuarioDAO::$FILE);
             $a_usuarios = json_decode($content, true);
             
             $return = false;

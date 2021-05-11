@@ -8,8 +8,10 @@
         $controller->{$action}();
     }
 
-    $controllers = array('home'    => ['inicio'],
-                         'usuario' => ['login', 'registrar', 'cerrarsesion']
+    $controllers = array('home'           => ['inicio'],
+                         'UsuarioCON'     => ['login', 'registrar', 'cerrarsesion'],
+                         'oferta'         => ['ofertas'],
+                         'productoCON'    => ['verProducto']
                         );
 
     if (array_key_exists($controller, $controllers)){

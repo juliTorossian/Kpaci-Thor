@@ -1,55 +1,37 @@
 <?php
 
-    class ProductoMOD{
+    class Producto{
 
-        public static $FILE_CAT = './json/producto.json';
+        public $productoId;
+        public $proNombre;
+        public $proDescripcion;
+        public $proValores;
+        public $proPrecio;
+        public $proNuevo;
+        public $proPromo;
+        public $proStock;
 
-        public static function cargarProductos(){
-            $content    = file_get_contents(ProductoMOD::$FILE_CAT);
-            $a_producto = json_decode($content, true);
-            return $a_producto;
+        public $categoria;
+
+        public function __construct($id, $nombre, $desc, $valores, $precio, $categoria, ){
+            $this->productoId     = $id;
+            $this->proNombre      = $nombre;
+            $this->proDescripcion = $desc;
+            $this->proValores     = $valores;
+            $this->proPrecio      = $precio;
+            $this->categoriaId    = $categoria;
         }
 
-        public static function cargarProductosEnPromo(){
-            $a_producto_promo = array();
-            $content    = file_get_contents(ProductoMOD::$FILE_CAT);
-            $a_producto_all = json_decode($content, true);
-            
-            foreach ($a_producto_all as $key => $value) {
-                if ($value['promocion'] == 'S') {
-                    $producto = array(
-                        'proId'=>$value['proId'],
-                        'proNombre'=>$value['proNombre'],
-                        'proDesc'=>$value['proDesc'],
-                        'proValores'=>$value['proValores'],
-                        'proPrecio'=>$value['proPrecio'],
-                        'categoriaId'=>$value['categoriaId']
-                    );
-                    array_push($a_producto_promo, $producto);
-                }
-            }
-            return $a_producto_promo;
+        public function setNuevo($esNuevo){
+            $this->proNuevo = $esNuevo;
         }
 
-        public static function cargarProductosNuevos(){
-            $a_productos_nuevos = array();
-            $content    = file_get_contents(ProductoMOD::$FILE_CAT);
-            $a_producto_all = json_decode($content, true);
-            
-            foreach ($a_producto_all as $key => $value) {
-                if ($value['promocion'] == 'S') {
-                    $producto = array(
-                        'proId'=>$value['proId'],
-                        'proNombre'=>$value['proNombre'],
-                        'proDesc'=>$value['proDesc'],
-                        'proValores'=>$value['proValores'],
-                        'proPrecio'=>$value['proPrecio'],
-                        'categoriaId'=>$value['categoriaId']
-                    );
-                    array_push($a_productos_nuevos, $producto);
-                }
-            }
-            return $a_productos_nuevos;
+        public function setPromo($estaPromo){
+            $this->proPromo = $estaPromo;
+        }
+
+        public function setStock($cantStock){
+            $this->proStock = $cantStock;
         }
     }
 

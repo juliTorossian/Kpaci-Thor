@@ -1,13 +1,13 @@
 <?php
 
-    class CategoriaMOD{
+    class Categoria{
 
-        public static $FILE_CAT = './json/categoria.json';
+        public $cateId;
+        public $cateNombre;
 
-        public static function cargarCategorias(){
-            $content    = file_get_contents(CategoriaMOD::$FILE_CAT);
-            $a_categoria = json_decode($content, true);
-            return $a_categoria;
+        public function __construct($id, $nombre){
+            $this->cateId     = $id;
+            $this->cateNombre = $nombre;
         }
 
     }

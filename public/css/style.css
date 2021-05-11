@@ -119,7 +119,7 @@ footer .bajo img{
 .body-login{
     background-color: #393e46;
 }
-.content{
+.content-login{
     margin-top: 10%;
     width: 33%;
     min-height: 250px;
@@ -133,7 +133,7 @@ footer .bajo img{
     padding: 20px;
     background-color: #393e46;
 }
-.content img{
+.content-login img{
     width: 80%;
     display: block;
     margin-left: auto;
@@ -208,4 +208,96 @@ footer .bajo img{
     right: 0;
     bottom: 0;
     margin: auto;
+}
+.carousel-indicators{
+    bottom: unset !important;
+}
+
+
+
+
+/* PROPIEDADES GENERALES */
+.menu-HOR{
+    background-color: #393e46;
+}
+.menu-HOR a{
+    color: white;
+}
+.menu-HOR a:hover{
+    color: #29a19c;
+}
+
+#menu-desplegable ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu-desplegable ul li a {
+	display: block;
+	text-decoration: none;
+	/* color: #fff;
+	background-color: rgba(59,93,148,1);
+	border: solid 1px #fff;
+	padding: 8px; */
+	position: relative;
+}
+
+#menu-desplegable ul li ul li a {
+    z-index: 5;
+	/* width: 160px; */
+    color: #000;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-top-width: 1px;
+    width: 355px;
+	padding: 8px 0px;
+}
+
+#menu-desplegable ul li ul {
+	display: none;
+}
+
+/* PROPIEDADES ESPECÍFICAS */
+
+#menu-desplegable ul li a.nivel1, #menu-desplegable ul li a.nivel2 {
+	display: block;
+	position: relative;
+}
+
+/* PROPIEDAD HOVER */
+
+#menu-desplegable ul li:hover {
+	position: relative;
+}
+
+.nivel1-hover:hover{
+    color: #29a19c !important;
+    background-color: unset !important;
+}
+
+.primero{
+    margin-top: 16px;
+}
+
+#menu-desplegable ul li a:hover, #menu-desplegable ul li:hover a.nivel1 {
+	color: #29a19c;
+	position: relative;
+}
+
+#menu-desplegable ul li:hover  ul.nivel2, #menu-desplegable ul li a:hover  ul.nivel2{
+	display: block;
+	position: absolute;left: 0px;
+}
+
+#menu-desplegable ul li ul li a:hover ul.nivel3, #menu-desplegable ul li ul li:hover ul.nivel3 {
+	display: block;
+	position: absolute;
+	right: 355px;
+	top:0px;
+}
+
+#menu-desplegable ul li ul li a:hover {
+	border-top-color: #000;
+	position: relative;
 }

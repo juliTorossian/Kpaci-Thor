@@ -12,7 +12,7 @@
     <title>Login</title>
 </head>
 <body class="">
-    <div class="content cuadro-login">
+    <div class="content-login cuadro-login">
         <img src="./public/img/login.png" alt="login image">
         <?php
             if(isset($_SESSION['error'])){
@@ -25,7 +25,7 @@
             <form action="" method="POST">
                 <p>Usuario: <input type="text" name="username" class="form_camp" required></p>
                 <p>Contraseña: <input type="password" name="password" class="form_camp" required></p>
-                <div class="form_add"><a href="index.php?controller=usuario&action=registrar">Registrarse</a></div>
+                <div class="form_add"><a href="index.php?controller=usuarioCON&action=registrar">Registrarse</a></div>
                 <input type="submit" name="submit" class="form_submit" value="Enviar 🡺">
             </form>
         </div>

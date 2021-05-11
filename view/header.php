@@ -39,9 +39,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php if (isset($_SESSION["username"])){?>
                         <a href="#" class="dropdown-item">Mi Cuenta</a>
-                        <a href="index.php?controller=usuario&action=cerrarsesion" class="dropdown-item">Cerrar Sesion</a>
+                        <a href="index.php?controller=UsuarioCON&action=cerrarsesion" class="dropdown-item">Cerrar Sesion</a>
                     <?php }else{?>
-                        <a href="index.php?controller=usuario&action=login" class="dropdown-item">Iniciar Sesion</a>
+                        <a href="index.php?controller=UsuarioCON&action=login" class="dropdown-item">Iniciar Sesion</a>
                     <?php }?>
                 </div>
             </div>
@@ -51,7 +51,7 @@
     <nav>
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-3" style="color: white; font-size: 32px;"><a href=""><img src="./public/img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
+                <div class="col-3" style="color: white; font-size: 32px;"><a href="./index.php"><img src="./public/img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
                 <div class="col-6">
                     <div class="input-group input-group-color">
                         <select class="form-select input-group-der">
@@ -77,3 +77,65 @@
             </div>
         </div>
     </nav>
+    <main>
+        <div class="menu-HOR">
+            <div class="container">
+                <div class="row text-center py-3">
+                    <div class="col-4"><a href="./index.php">Home</a></div>
+                    <div class="col-4"><a href="./index.php?controller=oferta&action=ofertas">Ofertas</a></div>
+                    <div class="col-4">
+                        <div id="menu-desplegable">
+                            <ul>
+                                <li class="nivel1"><a href="#" class="nivel1">Categorias</a>
+                                    <ul class="nivel2">
+                                        <?php
+                                            $primero = 'S';
+                                            foreach ($a_categoria as $key => $value) {
+                                                $id        = $value['cateId'];
+                                                $nombreCat = $value['cateNombre'];
+                                                $tieneSub  = $value['tieneSub'];
+                                                
+                                                if ($tieneSub != 'S'){
+                                                    if ($primero == 'S') {
+                                        ?>
+                                        <li class="primero"><a href="#"><?php echo($nombreCat);  ?></a></li>
+                                        <?php
+                                                        $primero = 'N';
+                                                    }else{
+                                        ?>
+                                        <li class=""><a href="#"><?php echo($nombreCat);  ?></a></li>
+                                        <?php
+                                                    }
+                                                }else{
+                                        ?>
+                                        <li class="nivel2"><a class="nivel2" href="#"><?php echo($nombreCat);  ?></a>
+                                            <ul class="nivel3">
+                                        <?php
+                                                    foreach ($a_subcategoria as $key => $value) {
+                                                        $subId        = $value['subcateId'];
+                                                        $cateId       = $value['cateId'];
+                                                        $nombreSubCat = $value['subcateNombre'];
+                                                        
+                                                        if ($id == $cateId) {
+                                        ?>
+                                                <li><a href="#"><?php echo($nombreSubCat);  ?></a></li>
+                                        <?php
+                                                        }
+                                                    }
+                                        ?>
+                                            </ul>
+                                        </li>
+                                        <?php
+                                                }
+                                            }
+                                        
+                                        ?>
+                                    </ul>
+                                </li>
+                            </ul>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

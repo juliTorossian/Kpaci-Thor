@@ -1,22 +1,27 @@
 [
     {
         "cateId": 1,
-        "cateNombre": "Sensores"
+        "cateNombre": "Sensores",
+        "tieneSub": "N"
     },
     {
         "cateId": 2,
-        "cateNombre": "Leds"
+        "cateNombre": "Leds",
+        "tieneSub": "N"
     },
     {
         "cateId": 3,
-        "cateNombre": "Resistencias"
+        "cateNombre": "Resistencias",
+        "tieneSub": "N"
     },
     {
         "cateId": 4,
-        "cateNombre": "Capacitores"
+        "cateNombre": "Capacitores",
+        "tieneSub": "N"
     },
     {
         "cateId": 5,
-        "cateNombre": "Herramientas"
+        "cateNombre": "Herramientas",
+        "tieneSub": "S"
     }
 ]

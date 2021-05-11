@@ -18,9 +18,9 @@
                         <div class="col-4">
                             <p>CATEGORIAS</p>
                             <ul>
-                                <li>OFERTAS</li>
-                                <li>CATE1</li>
-                                <li>CATE2</li>
+                                <li><a href="./index.php?controller=oferta&action=ofertas">OFERTAS</a></li>
+                                <li><a href="">CATE1</a></li>
+                                <li><a href="">CATE2</a></li>
                             </ul>
                         </div>
                         <div class="col-4">
@@ -28,9 +28,9 @@
                                 <li>
                                     <p>INFO</p>
                                     <ul>
-                                        <li>Contacto</li>
-                                        <li>Envios</li>
-                                        <li>terminos y condiciones</li>
+                                        <li><a href="">Contacto</a></li>
+                                        <li><a href="">Envios</a></li>
+                                        <li><a href="">Terminos y Condiciones</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -40,9 +40,9 @@
                                 <li>
                                     <p>CUENTA</p>
                                     <ul>
-                                        <li>Mi Cuenta</li>
-                                        <li>Favoritos</li>
-                                        <li>Seguimiento de Envios</li>
+                                        <li><a href="">Mi Cuenta</a></li>
+                                        <li><a href="">Favoritos</a></li>
+                                        <li><a href="">Seguimiento de Envios</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -1,0 +1,17 @@
+[
+    {
+        "subcateId": 1,
+        "cateId": 5,
+        "subcateNombre": "Medicion"
+    },
+    {
+        "subcateId": 2,
+        "cateId": 5,
+        "subcateNombre": "Soldadura"
+    },
+    {
+        "subcateId": 2,
+        "cateId": 4,
+        "subcateNombre": "Soldadura"
+    }
+]
