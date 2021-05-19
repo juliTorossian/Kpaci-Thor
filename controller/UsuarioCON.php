@@ -1,5 +1,8 @@
 <?php
     require_once("./model/UsuarioDAO.php");
+    require_once('./model/productoDAO.php');
+    require_once('./model/categoriaDAO.php');
+    require_once('./model/categoria.php');
     
     class UsuarioCON {
 
@@ -48,6 +51,34 @@
             if(isset($_SESSION['username'])){
                 unset($_SESSION["username"]);
                 header('Location: ./index.php');
+            }
+        }
+
+        function miCuenta(){
+            if(!isset($_SESSION['username'])){
+                header('Location: ./index.php?controller=UsuarioCON&action=login');
+            }else{
+                $categorias = CategoriaDAO::cargarCategorias();
+                require_once('./view/miCuenta.php');
+            }
+        }
+
+        function favoritos(){
+            if(!isset($_SESSION['username'])){
+                header('Location: ./index.php?controller=UsuarioCON&action=login');
+            }else{
+                $categorias = CategoriaDAO::cargarCategorias();
+                $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
+                require_once('./view/favoritos.php');
+            }
+        }
+
+        function misCompras(){
+            if(!isset($_SESSION['username'])){
+                header('Location: ./index.php?controller=UsuarioCON&action=login');
+            }else{
+                $categorias = CategoriaDAO::cargarCategorias();
+                require_once('./view/misCompras.php');
             }
         }
     }

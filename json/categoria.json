@@ -1,27 +1,44 @@
 [
     {
         "cateId": 1,
+        "catePadre": 0,
         "cateNombre": "Sensores",
         "tieneSub": "N"
     },
     {
         "cateId": 2,
+        "catePadre": 0,
         "cateNombre": "Leds",
         "tieneSub": "N"
     },
     {
         "cateId": 3,
+        "catePadre": 0,
         "cateNombre": "Resistencias",
         "tieneSub": "N"
     },
     {
         "cateId": 4,
+        "catePadre": 0,
         "cateNombre": "Capacitores",
         "tieneSub": "N"
     },
     {
         "cateId": 5,
+        "catePadre": 0,
         "cateNombre": "Herramientas",
         "tieneSub": "S"
+    },
+    {
+        "cateId": 6,
+        "catePadre": 5,
+        "cateNombre": "Medicion",
+        "tieneSub": "N"
+    },
+    {
+        "cateId": 7,
+        "catePadre": 5,
+        "cateNombre": "Soldadura",
+        "tieneSub": "N"
     }
 ]

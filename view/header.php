@@ -23,9 +23,9 @@
     <header class="navbar navbar-expand-lg">
         <div class="container-fluid align-items-center">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item item-header"><i class="bi bi-whatsapp icon-header"     ></i><a href=""> (+54) 294-4900241</a></li>
-                <li class="nav-item item-header"><i class="bi bi-envelope-fill icon-header"></i><a href=""> mail@gmail.com   </a></li>
-                <li class="nav-item item-header"><i class="bi bi-geo-fill icon-header"     ></i><a href=""> urquiza 4750 7F  </a></li>
+                <li class="nav-item item-header"><i class="bi bi-whatsapp icon-header"     ></i> <a href="tel:+542944900241">(+54) 294-4900241</a></li>
+                <li class="nav-item item-header"><i class="bi bi-envelope-fill icon-header"></i> <a href="mailto:julian.torossian@davinci.edu.ar">julian.torossian@davinci.edu.ar</a></li>
+                <li class="nav-item item-header"><i class="bi bi-geo-fill icon-header"     ></i> <a href="https://goo.gl/maps/4XdSbHynP8342Z9r5" target="blank">Av. Corrientes 2037, C1001 CABA</a></li>
             </ul>
             <form class="d-flex">
                 <select class="form-select selection-header">
@@ -57,12 +57,15 @@
                         <select class="form-select input-group-der">
                             <option value="1" selected>All</option>
                         <?php
-                            foreach ($a_categoria as $key => $value) {
-                            $nombreCat = $value['cateNombre'];
-                            $valueCat  = $value['cateId'];
+                            foreach ($categorias as $key => $value) {
+                                if($value->catePadre == 0){
+                                    $nombreCat = $value->cateNombre;
+                                    $valueCat  = $value->cateId;
                         ?>
                             <option value="<?php echo($valueCat);?>"><?php echo($nombreCat);?></option>
-                        <?php } ?>
+                        <?php   }
+                            } 
+                        ?>
                         </select>
                         <input  type="text" class="form-control" placeholder="Buscar..." aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <button class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
@@ -90,42 +93,46 @@
                                     <ul class="nivel2">
                                         <?php
                                             $primero = 'S';
-                                            foreach ($a_categoria as $key => $value) {
-                                                $id        = $value['cateId'];
-                                                $nombreCat = $value['cateNombre'];
-                                                $tieneSub  = $value['tieneSub'];
+                                            foreach ($categorias as $key => $value) {
+                                                $id        = $value->cateId;
+                                                $idPadre   = $value->catePadre;
+                                                $nombreCat = $value->cateNombre;
+                                                $tieneSub  = $value->tieneSub;
                                                 
-                                                if ($tieneSub != 'S'){
-                                                    if ($primero == 'S') {
+                                                if ($idPadre == 0){
+                                                    if ($tieneSub != 'S'){
+                                                        if ($primero == 'S') {
                                         ?>
-                                        <li class="primero"><a href="#"><?php echo($nombreCat);  ?></a></li>
+                                        <li class="primero"><a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($id); ?>"><?php echo($nombreCat);  ?></a></li>
                                         <?php
-                                                        $primero = 'N';
+                                                            $primero = 'N';
+                                                        }else{
+                                        ?>
+                                        <li class=""><a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($id); ?>"><?php echo($nombreCat);  ?></a></li>
+                                        <?php
+                                                        }
                                                     }else{
                                         ?>
-                                        <li class=""><a href="#"><?php echo($nombreCat);  ?></a></li>
-                                        <?php
-                                                    }
-                                                }else{
-                                        ?>
-                                        <li class="nivel2"><a class="nivel2" href="#"><?php echo($nombreCat);  ?></a>
+                                        <li class="nivel2"><a class="nivel2" href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($id); ?>"><?php echo($nombreCat);  ?></a>
                                             <ul class="nivel3">
                                         <?php
-                                                    foreach ($a_subcategoria as $key => $value) {
-                                                        $subId        = $value['subcateId'];
-                                                        $cateId       = $value['cateId'];
-                                                        $nombreSubCat = $value['subcateNombre'];
+                                                    foreach ($categorias as $key => $valor) {
+                                                        $subId        = $valor->cateId;
+                                                        $cateId       = $valor->catePadre;
+                                                        $nombreSubCat = $valor->cateNombre;
+                                                        $tieneSub     = $valor->tieneSub;
                                                         
                                                         if ($id == $cateId) {
                                         ?>
-                                                <li><a href="#"><?php echo($nombreSubCat);  ?></a></li>
+                                                <li><a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($subId); ?>"><?php echo($nombreSubCat);  ?></a></li>
                                         <?php
+                                                            }
                                                         }
-                                                    }
                                         ?>
                                             </ul>
                                         </li>
                                         <?php
+                                                    }
                                                 }
                                             }
                                         

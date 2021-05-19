@@ -107,6 +107,18 @@ footer .bajo{
 footer .bajo img{
     width: 100%;
 }
+footer .bajo li{
+    text-align: center;
+    margin-bottom: 10px;
+}
+footer li a{
+    color: #29a19c;
+}
+footer li a:hover{
+    color: #fff;
+}
+
+
 .dropdown-toggle::after {
     display:none;
 }

@@ -8,7 +8,8 @@
         "stock": 200,
         "categoriaId": 1,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 2,
@@ -19,7 +20,8 @@
         "stock": 150,
         "categoriaId": 1,
         "nuevo": "N",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 10
     },
     {
         "proId": 3,
@@ -30,7 +32,8 @@
         "stock": 150,
         "categoriaId": 1,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 4,
@@ -41,7 +44,8 @@
         "stock": 400,
         "categoriaId": 2,
         "nuevo": "S",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 10
     },
     {
         "proId": 5,
@@ -52,7 +56,8 @@
         "stock": 400,
         "categoriaId": 2,
         "nuevo": "S",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 10
     },
     {
         "proId": 6,
@@ -63,7 +68,8 @@
         "stock": 400,
         "categoriaId": 2,
         "nuevo": "S",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 10
     },
     {
         "proId": 7,
@@ -74,7 +80,8 @@
         "stock": 350,
         "categoriaId": 2,
         "nuevo": "S",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 20
     },
     {
         "proId": 8,
@@ -85,7 +92,8 @@
         "stock": 330,
         "categoriaId": 3,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 9,
@@ -96,7 +104,8 @@
         "stock": 150,
         "categoriaId": 3,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 10,
@@ -107,7 +116,8 @@
         "stock": 150,
         "categoriaId": 3,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 11,
@@ -118,7 +128,8 @@
         "stock": 220,
         "categoriaId": 4,
         "nuevo": "S",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 12,
@@ -129,7 +140,8 @@
         "stock": 95,
         "categoriaId": 4,
         "nuevo": "S",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 13,
@@ -140,7 +152,8 @@
         "stock": 52,
         "categoriaId": 4,
         "nuevo": "S",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 14,
@@ -149,9 +162,10 @@
         "proValores": "Ut33c+",
         "proPrecio": 1695,
         "stock": 360,
-        "categoriaId": 5,
+        "categoriaId": 6,
         "nuevo": "N",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 15
     },
     {
         "proId": 15,
@@ -160,9 +174,10 @@
         "proValores": "T830d",
         "proPrecio": 448,
         "stock": 150,
-        "categoriaId": 5,
+        "categoriaId": 6,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 16,
@@ -171,9 +186,10 @@
         "proValores": "Ut201+",
         "proPrecio": 3200,
         "stock": 265,
-        "categoriaId": 5,
+        "categoriaId": 6,
         "nuevo": "N",
-        "promocion": "S"
+        "promocion": "S",
+        "descuento": 10
     },
     {
         "proId": 17,
@@ -182,9 +198,10 @@
         "proValores": "30-70 Watts",
         "proPrecio": 1150,
         "stock": 640,
-        "categoriaId": 5,
+        "categoriaId": 7,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 18,
@@ -193,9 +210,10 @@
         "proValores": "40 Watts",
         "proPrecio": 430,
         "stock": 210,
-        "categoriaId": 5,
+        "categoriaId": 7,
         "nuevo": "S",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 19,
@@ -204,9 +222,10 @@
         "proValores": "60/40",
         "proPrecio": 165,
         "stock": 100,
-        "categoriaId": 5,
+        "categoriaId": 7,
         "nuevo": "S",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     },
     {
         "proId": 20,
@@ -215,8 +234,9 @@
         "proValores": "60/40",
         "proPrecio": 595,
         "stock": 20,
-        "categoriaId": 5,
+        "categoriaId": 7,
         "nuevo": "N",
-        "promocion": "N"
+        "promocion": "N",
+        "descuento": 0
     }
 ]

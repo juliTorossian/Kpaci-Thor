@@ -18,9 +18,9 @@
                         <div class="col-4">
                             <p>CATEGORIAS</p>
                             <ul>
+                                <li><a href="./index.php">Home</a></li>
                                 <li><a href="./index.php?controller=oferta&action=ofertas">OFERTAS</a></li>
-                                <li><a href="">CATE1</a></li>
-                                <li><a href="">CATE2</a></li>
+                                <li><a href="./index.php?controller=productoCON&action=verListaProductos">Lista de Productos</a></li>
                             </ul>
                         </div>
                         <div class="col-4">
@@ -28,8 +28,8 @@
                                 <li>
                                     <p>INFO</p>
                                     <ul>
-                                        <li><a href="">Contacto</a></li>
                                         <li><a href="">Envios</a></li>
+                                        <li><a href="">Contacto</a></li>
                                         <li><a href="">Terminos y Condiciones</a></li>
                                     </ul>
                                 </li>
@@ -40,9 +40,9 @@
                                 <li>
                                     <p>CUENTA</p>
                                     <ul>
-                                        <li><a href="">Mi Cuenta</a></li>
-                                        <li><a href="">Favoritos</a></li>
-                                        <li><a href="">Seguimiento de Envios</a></li>
+                                        <li><a href="./index.php?controller=UsuarioCON&action=favoritos">Favoritos</a></li>
+                                        <li><a href="./index.php?controller=UsuarioCON&action=miCuenta">Mi Cuenta</a></li>
+                                        <li><a href="./index.php?controller=UsuarioCON&action=misCompras">Mis Compras</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -53,9 +53,9 @@
             <div class="row p-4 bajo">
                 <div class="col-4">
                     <ul>
-                        <li>contacto</li>
-                        <li>falta</li>
-                        <li>completar</li>
+                        <li><a href="tel:+542944900241">(+54) 294-4900241</a></li>
+                        <li><a href="mailto:julian.torossian@davinci.edu.ar">julian.torossian@davinci.edu.ar</a></li>
+                        <li><a href="https://goo.gl/maps/4XdSbHynP8342Z9r5" target="blank">Av. Corrientes 2037, C1001 CABA</a></li>
                     </ul>
                 </div>
                 <div class="col-4 p-2">
@@ -68,10 +68,6 @@
         </div>
         
     </footer>
-
-
-
-
 
 
 

@@ -9,9 +9,9 @@
     }
 
     $controllers = array('home'           => ['inicio'],
-                         'UsuarioCON'     => ['login', 'registrar', 'cerrarsesion'],
+                         'UsuarioCON'     => ['login', 'registrar', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
-                         'productoCON'    => ['verProducto']
+                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos']
                         );
 
     if (array_key_exists($controller, $controllers)){

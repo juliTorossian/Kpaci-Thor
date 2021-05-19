@@ -7,7 +7,6 @@
 
     <div class="container bg-white py-4">
         <div class="row">
-            <h3 style="text-align: center; margin-bottom: 30px;">Ofertas</h3>
             <div class="col-3">
                 <form action="" method="post">
                     <h1 class="mb-4 text-center" id="productos">Categorias</h1>
@@ -76,7 +75,7 @@
                 <div class="row">
                     <?php
                     $imprime = false;
-                    foreach ($a_productos_promo as $key => $value) {
+                    foreach ($productos as $key => $value) {
                         if(!(isset($_SESSION["categoria"])) or $_SESSION["categoria"] == 0){
                             $imprime = true;
                         }elseif($value->categoriaId == $_SESSION["categoria"]  ){

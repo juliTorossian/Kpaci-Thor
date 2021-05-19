@@ -10,10 +10,11 @@
         public $proNuevo;
         public $proPromo;
         public $proStock;
+        public $proDescuento;
 
         public $categoria;
 
-        public function __construct($id, $nombre, $desc, $valores, $precio, $categoria, ){
+        public function __construct($id, $nombre, $desc, $valores, $precio, $categoria){
             $this->productoId     = $id;
             $this->proNombre      = $nombre;
             $this->proDescripcion = $desc;
@@ -27,7 +28,11 @@
         }
 
         public function setPromo($estaPromo){
-            $this->proPromo = $estaPromo;
+            $this->proDescuento = $estaPromo;
+        }
+
+        public function setDescuento($porcDescuento){
+            $this->proStock = $porcDescuento;
         }
 
         public function setStock($cantStock){
