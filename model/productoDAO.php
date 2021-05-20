@@ -17,6 +17,7 @@
                 $producto->setNuevo($value['nuevo']);
                 $producto->setPromo($value['promocion']);
                 $producto->setStock($value['stock']);
+                $producto->setDescuento($value['descuento']);
                 array_push($a_productos, $producto);
             }
             return $a_productos;
@@ -33,6 +34,7 @@
                     $producto->setNuevo($value['nuevo']);
                     $producto->setPromo($value['promocion']);
                     $producto->setStock($value['stock']);
+                    $producto->setDescuento($value['descuento']);
                     array_push($a_productos_promo, $producto);
                 }
             }
@@ -50,6 +52,7 @@
                     $producto->setNuevo($value['nuevo']);
                     $producto->setPromo($value['promocion']);
                     $producto->setStock($value['stock']);
+                    $producto->setDescuento($value['descuento']);
                     array_push($a_productos_nuevos, $producto);
                 }
             }
@@ -67,6 +70,7 @@
                     $producto->setNuevo($value['nuevo']);
                     $producto->setPromo($value['promocion']);
                     $producto->setStock($value['stock']);
+                    $producto->setDescuento($value['descuento']);
                 }
             }
             return $producto;
@@ -89,6 +93,7 @@
                                 $producto->setNuevo($valueP['nuevo']);
                                 $producto->setPromo($valueP['promocion']);
                                 $producto->setStock($valueP['stock']);
+                                $producto->setDescuento($valueP['descuento']);
                                 array_push($productos, $producto);
                             }
                         }
@@ -102,6 +107,7 @@
                                         $producto->setNuevo($valueP['nuevo']);
                                         $producto->setPromo($valueP['promocion']);
                                         $producto->setStock($valueP['stock']);
+                                        $producto->setDescuento($valueP['descuento']);
                                         array_push($productos, $producto);
                                     }
                                 }
@@ -130,6 +136,7 @@
                                 $producto->setNuevo($valorP['nuevo']);
                                 $producto->setPromo($valorP['promocion']);
                                 $producto->setStock($valorP['stock']);
+                                $producto->setDescuento($valorP['descuento']);
                                 array_push($a_productos_favoritos, $producto);
                             }
                         }
