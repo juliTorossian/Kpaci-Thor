@@ -24,15 +24,15 @@
         }
 
         public function setNuevo($esNuevo){
-            $this->proNuevo = ($esNuevo == 'S');
+            $this->proNuevo = $esNuevo;
         }
 
         public function setPromo($estaPromo){
-            $this->proPromo = ($estaPromo == 'S');
+            $this->proDescuento = $estaPromo;
         }
 
         public function setDescuento($porcDescuento){
-            $this->proDescuento = $porcDescuento;
+            $this->proStock = $porcDescuento;
         }
 
         public function setStock($cantStock){
