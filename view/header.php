@@ -41,7 +41,7 @@
                         <a href="#" class="dropdown-item">Mi Cuenta</a>
                         <a href="index.php?controller=UsuarioCON&action=cerrarsesion" class="dropdown-item">Cerrar Sesion</a>
                     <?php }else{?>
-                        <a href="index.php?controller=UsuarioCON&action=loginView" class="dropdown-item">Iniciar Sesion</a>
+                        <a href="index.php?controller=UsuarioCON&action=login" class="dropdown-item">Iniciar Sesion</a>
                     <?php }?>
                 </div>
             </div>

@@ -13,7 +13,7 @@
     <title>Registrarse</title>
 </head>
 <body>
-    <div class="content-login cuadro-login">
+    <div class="content">
         <!-- <img src="img/login.png" alt="login image"> -->
         <?php
             if(isset($_SESSION['error'])){
@@ -21,7 +21,7 @@
                 unset($_SESSION["error"]);
             }
         ?>
-        <div class="form_main_register" style="color: #fff;">
+        <div class="form_main_register">
             <form action="./index.php?controller=UsuarioCON&action=registrar" method="POST">
                 <p>Usuario: <input type="text" name="username" class="form_camp" required></p>
                 <p>Contraseña: <input type="password" name="password" class="form_camp" required></p>

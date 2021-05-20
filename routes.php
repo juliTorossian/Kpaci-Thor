@@ -9,7 +9,7 @@
     }
 
     $controllers = array('home'           => ['inicio'],
-                         'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
+                         'UsuarioCON'     => ['login', 'registrar', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
                          'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos']
                         );
