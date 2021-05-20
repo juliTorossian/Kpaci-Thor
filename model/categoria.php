@@ -9,9 +9,9 @@
 
         public function __construct($id, $padre, $nombre, $tieneSub){
             $this->cateId     = $id;
-            $this->catePadre  = $padre;
+            $this->catePadre = $padre;
             $this->cateNombre = $nombre;
-            $this->tieneSub   = ($tieneSub == 'S');
+            $this->tieneSub  = $tieneSub;
         }
 
     }
