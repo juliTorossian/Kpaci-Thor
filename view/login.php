@@ -21,13 +21,15 @@
             }
         ?>
         <div class="form_main">
-
-            <form action="" method="POST">
+            <form action="./index.php?controller=UsuarioCON&action=login" method="POST">
                 <p>Usuario: <input type="text" name="username" class="form_camp" required></p>
                 <p>Contraseña: <input type="password" name="password" class="form_camp" required></p>
-                <div class="form_add"><a href="index.php?controller=UsuarioCON&action=registrar">Registrarse</a></div>
+                <div class="form_add"><a href="index.php?controller=UsuarioCON&action=registrarView">Registrarse</a></div>
                 <input type="submit" name="submit" class="form_submit" value="Enviar 🡺">
             </form>
         </div>
 </body>
 </html>
+<?php
+
+?>
