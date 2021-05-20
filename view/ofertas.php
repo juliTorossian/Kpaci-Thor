@@ -20,7 +20,7 @@
                     $tieneSub  = $value->tieneSub;
 
                         if($idPadre == 0){
-                            if ($tieneSub == 'N') {
+                            if ($tieneSub) {
                                 //imprime check comun
                     ?>
                     <div class="form-check">
@@ -102,7 +102,7 @@
                                     <a href="<?php echo($linkDetalle);?>"><?php echo($nombrePro)?></a>
                                 </h4>
                     <?php
-                            if($value->proPromo == "S"){
+                            if($value->proPromo){
                                 $precioCDesc = $precioPro - (($value->proDescuento * $precioPro) / 100);
                     ?>
                                 <h5 style="text-decoration:line-through;"><?php echo('$'.number_format($precioPro, 2))?></h5>

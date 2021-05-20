@@ -92,7 +92,7 @@
                                 <li class="nivel1"><a href="#" class="nivel1">Categorias</a>
                                     <ul class="nivel2">
                                         <?php
-                                            $primero = 'S';
+                                            $primero = true;
                                             foreach ($categorias as $key => $value) {
                                                 $id        = $value->cateId;
                                                 $idPadre   = $value->catePadre;
@@ -100,12 +100,12 @@
                                                 $tieneSub  = $value->tieneSub;
                                                 
                                                 if ($idPadre == 0){
-                                                    if ($tieneSub != 'S'){
-                                                        if ($primero == 'S') {
+                                                    if (!$tieneSub){
+                                                        if ($primero) {
                                         ?>
                                         <li class="primero"><a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($id); ?>"><?php echo($nombreCat);  ?></a></li>
                                         <?php
-                                                            $primero = 'N';
+                                                            $primero = false;
                                                         }else{
                                         ?>
                                         <li class=""><a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($id); ?>"><?php echo($nombreCat);  ?></a></li>
