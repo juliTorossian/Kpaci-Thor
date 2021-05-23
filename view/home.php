@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                 <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
-                                <p class="card-text mr-2" style="text-align: right;">$<?php echo($value->proPrecio);?></p>
+                                <p class="card-text mr-2" style="text-align: right;">$<?php echo(round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2));?></p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="btn-group text-center" role="group" aria-label="">
@@ -83,7 +83,7 @@
                                 <div class="card-body">
                                 <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
-                                <p class="card-text mr-2" style="text-align: right;">$<?php echo($value->proPrecio);?></p>
+                                <p class="card-text mr-2" style="text-align: right;">$<?php echo(round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2));?></p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="btn-group text-center" role="group" aria-label="">
