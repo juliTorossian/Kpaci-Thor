@@ -11,7 +11,8 @@
     $controllers = array('home'           => ['inicio'],
                          'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
-                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos']
+                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos'],
+                         'footer'         => ['agregarSub']
                         );
 
     if (array_key_exists($controller, $controllers)){
