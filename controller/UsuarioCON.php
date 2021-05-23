@@ -3,6 +3,8 @@
     require_once('./model/productoDAO.php');
     require_once('./model/categoriaDAO.php');
     require_once('./model/categoria.php');
+    require_once('./model/monedaDAO.php');
+    require_once('./model/moneda.php');
     
     class UsuarioCON {
 
@@ -67,6 +69,7 @@
                 header('Location: ./index.php?controller=UsuarioCON&action=login');
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
+                $monedas            = monedaDAO::cargarMonedas();
                 require_once('./view/miCuenta.php');
             }
         }
@@ -77,6 +80,7 @@
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
                 $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
+                $monedas            = monedaDAO::cargarMonedas();
                 require_once('./view/favoritos.php');
             }
         }
@@ -86,6 +90,7 @@
                 header('Location: ./index.php?controller=UsuarioCON&action=login');
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
+                $monedas            = monedaDAO::cargarMonedas();
                 require_once('./view/misCompras.php');
             }
         }

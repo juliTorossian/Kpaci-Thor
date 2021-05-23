@@ -86,7 +86,7 @@
                             $imprime = false;
 
                             $nombrePro   = $value->proNombre;
-                            $precioPro   = $value->proPrecio;
+                            $precioPro   = round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
                             $descPro     = $value->proDescripcion;
                             $descImg     = $value->proNomImagen."_220x220.jpg";
                             $linkDetalle = "./index.php?controller=productoCON&action=verProducto&productoId=$value->productoId"

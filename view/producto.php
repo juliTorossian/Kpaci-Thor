@@ -32,8 +32,8 @@
                     </div>
                     <div style="text-align: right !important;">
                         <?php
-                            $precio = $producto->proPrecio;
-                            $precio = ($producto->proPromo) ? $producto->proPrecio * (1 + ($producto->proDescuento / 100)) : $producto->proPrecio;
+                            $precio = round($producto->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                            $precio = ($producto->proPromo) ? $precio - $precio * (($producto->proDescuento / 100)) : $precio;
                         ?>
                         <h5 class="h3">$<?php echo($precio);?></h5>
                     </div>
