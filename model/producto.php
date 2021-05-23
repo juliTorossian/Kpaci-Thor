@@ -4,6 +4,7 @@
 
         public $productoId;
         public $proNombre;
+        public $proNomImagen;
         public $proDescripcion;
         public $proValores;
         public $proPrecio;
@@ -14,9 +15,10 @@
 
         public $categoria;
 
-        public function __construct($id, $nombre, $desc, $valores, $precio, $categoria){
+        public function __construct($id, $nombre, $desc, $valores, $precio, $categoria, $nomImg){
             $this->productoId     = $id;
             $this->proNombre      = $nombre;
+            $this->proNomImagen   = $nomImg;
             $this->proDescripcion = $desc;
             $this->proValores     = $valores;
             $this->proPrecio      = $precio;
