@@ -13,7 +13,7 @@
             $a_producto_all = json_decode($content, true);
             
             foreach ($a_producto_all as $key => $value) {
-                $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId']);
+                $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
                 $producto->setNuevo($value['nuevo']);
                 $producto->setPromo($value['promocion']);
                 $producto->setStock($value['stock']);
@@ -30,7 +30,7 @@
             
             foreach ($a_producto_all as $key => $value) {
                 if ($value['promocion'] == 'S') {
-                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId']);
+                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
                     $producto->setNuevo($value['nuevo']);
                     $producto->setPromo($value['promocion']);
                     $producto->setStock($value['stock']);
@@ -48,7 +48,7 @@
             
             foreach ($a_producto_all as $key => $value) {
                 if ($value['nuevo'] == 'S') {
-                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId']);
+                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
                     $producto->setNuevo($value['nuevo']);
                     $producto->setPromo($value['promocion']);
                     $producto->setStock($value['stock']);
@@ -66,7 +66,7 @@
             
             foreach ($a_producto_all as $key => $value) {
                 if ($value['proId'] == $productoId) {
-                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId']);
+                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
                     $producto->setNuevo($value['nuevo']);
                     $producto->setPromo($value['promocion']);
                     $producto->setStock($value['stock']);
@@ -89,7 +89,7 @@
                     if ($value['tieneSub'] == 'N'){
                         foreach ($a_producto_all as $key => $valueP) {
                             if ($valueP['categoriaId'] == $categoriaId) {
-                                $producto = new Producto($valueP['proId'],$valueP['proNombre'],$valueP['proDesc'],$valueP['proValores'],$valueP['proPrecio'],$valueP['categoriaId']);
+                                $producto = new Producto($valueP['proId'],$valueP['proNombre'],$valueP['proDesc'],$valueP['proValores'],$valueP['proPrecio'],$valueP['categoriaId'], $valueP['proNomImg']);
                                 $producto->setNuevo($valueP['nuevo']);
                                 $producto->setPromo($valueP['promocion']);
                                 $producto->setStock($valueP['stock']);
@@ -103,7 +103,7 @@
                                 $categoriaIdACT = $valor['cateId'];
                                 foreach ($a_producto_all as $key => $valueP) {
                                     if ($valueP['categoriaId'] == $categoriaIdACT) {
-                                        $producto = new Producto($valueP['proId'],$valueP['proNombre'],$valueP['proDesc'],$valueP['proValores'],$valueP['proPrecio'],$valueP['categoriaId']);
+                                        $producto = new Producto($valueP['proId'],$valueP['proNombre'],$valueP['proDesc'],$valueP['proValores'],$valueP['proPrecio'],$valueP['categoriaId'], $valueP['proNomImg']);
                                         $producto->setNuevo($valueP['nuevo']);
                                         $producto->setPromo($valueP['promocion']);
                                         $producto->setStock($valueP['stock']);
@@ -132,7 +132,7 @@
                     foreach ($a_idProductos as $key => $valor) {
                         foreach ($a_producto_all as $key => $valorP) {
                             if ($valorP['proId'] == $valor) {
-                                $producto = new Producto($valorP['proId'],$valorP['proNombre'],$valorP['proDesc'],$valorP['proValores'],$valorP['proPrecio'],$valorP['categoriaId']);
+                                $producto = new Producto($valorP['proId'],$valorP['proNombre'],$valorP['proDesc'],$valorP['proValores'],$valorP['proPrecio'],$valorP['categoriaId'], $valorP['proNomImg']);
                                 $producto->setNuevo($valorP['nuevo']);
                                 $producto->setPromo($valorP['promocion']);
                                 $producto->setStock($valorP['stock']);

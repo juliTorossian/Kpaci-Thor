@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3">
-                                <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>"><img src="https://via.placeholder.com/220.png" alt="imagen producto"></a>
+                                <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>"><img src="./public/img/img_productos/<?php echo($value->proNomImagen);?>_220x220.jpg" alt="imagen producto"></a>
                             </div>
                             <div class="col-6 my-auto">
                                 <h5 class="card-title"><a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>"><?php echo($value->proNombre);?></a></h5>

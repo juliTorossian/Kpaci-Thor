@@ -29,7 +29,7 @@
                             }
                     ?>
                             <div class="card" style="max-width: 33% !important;">
-                                <img src="https://via.placeholder.com/220.png" class="card-img-top" alt="...">
+                                <img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                 <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
@@ -79,7 +79,7 @@
                             }
                     ?>
                             <div class="card" style="max-width: 33% !important;">
-                                <img src="https://via.placeholder.com/220.png" class="card-img-top" alt="...">
+                                <img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                 <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
