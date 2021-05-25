@@ -80,7 +80,7 @@
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
                 $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
-                $monedas            = monedaDAO::cargarMonedas();
+                $monedas    = monedaDAO::cargarMonedas();
                 require_once('./view/favoritos.php');
             }
         }

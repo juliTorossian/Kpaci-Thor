@@ -145,6 +145,32 @@
             }
             return $a_productos_favoritos;
         }
+
+        public static function cargarProductosCarritoPorUsuario($usuario){
+            $a_productos_carrito   = array();
+            $a_producto_all        = json_decode(file_get_contents(ProductoDAO::$FILE_PRO), true);
+            $a_carrito_all         = json_decode(file_get_contents(ProductoDAO::$FILE_FAV), true);
+            
+            foreach ($a_carrito_all as $key => $value) {
+                if ($value['usuario'] == $usuario) {
+                    $a_idPrdCant   = explode(",", $value['idProductos']);
+                    $a_idProductos = explode(":", $value['idProductos']);
+                    foreach ($a_idProductos as $key => $valor) {
+                        foreach ($a_producto_all as $key => $valorP) {
+                            if ($valorP['proId'] == $valor) {
+                                $producto = new Producto($valorP['proId'],$valorP['proNombre'],$valorP['proDesc'],$valorP['proValores'],$valorP['proPrecio'],$valorP['categoriaId'], $valorP['proNomImg']);
+                                $producto->setNuevo($valorP['nuevo']);
+                                $producto->setPromo($valorP['promocion']);
+                                $producto->setStock($valorP['stock']);
+                                $producto->setDescuento($valorP['descuento']);
+                                array_push($a_productos_carrito, $producto);
+                            }
+                        }
+                    }
+                }
+            }
+            return $a_productos_carrito;
+        }
     }
 
 ?>

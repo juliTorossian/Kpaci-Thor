@@ -1,23 +1,43 @@
-<?php 
-    require_once('./view/header.php');
-?>
+<?php
 
+    require_once('header.php');
+
+?>
 
 
 
     <div class="container bg-white py-4">
         <div class="row mx-auto my-auto">
-
-            <div>
-                <div>
-                    
+            <h3 style="text-align: center; margin-bottom: 30px;">Favoritos</h3>
+            <div class="px-5">
+                <?php
+                    if (!empty($productos)){
+                        foreach ($productos as $key => $value) {
+                ?>
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>"><img src="./public/img/img_productos/<?php echo($value->proNomImagen);?>_220x220.jpg" alt="imagen producto"></a>
+                            </div>
+                            <div class="col-6 my-auto">
+                                <h5 class="card-title"><a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>"><?php echo($value->proNombre);?></a></h5>
+                            </div>
+                            <div class="col-3 my-auto float-right">
+                                <button type="button" class="btn btn-primary">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <?php
+                        }
+                    }else{
+                ?>
+                    <p>Lista de Favoritos Vacia</p>
+                <?php
+                    }
+                ?>
             </div>
-
-
-
-            <p>PRODUCTO</p>
-            <p><?php echo($producto['proNombre']);?></p>
         </div>
             
     </div>
@@ -26,6 +46,9 @@
 
 
 
+
 <?php 
-    require_once('./view/footer.php');
-?>  
+
+    require_once('footer.php');
+
+?>
