@@ -69,7 +69,7 @@
                 header('Location: ./index.php?controller=UsuarioCON&action=login');
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
-                $monedas            = monedaDAO::cargarMonedas();
+                $monedas    = monedaDAO::cargarMonedas();
                 require_once('./view/miCuenta.php');
             }
         }
@@ -80,7 +80,7 @@
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
                 $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
-                $monedas            = monedaDAO::cargarMonedas();
+                $monedas    = monedaDAO::cargarMonedas();
                 require_once('./view/favoritos.php');
             }
         }
@@ -90,7 +90,7 @@
                 header('Location: ./index.php?controller=UsuarioCON&action=login');
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
-                $monedas            = monedaDAO::cargarMonedas();
+                $monedas    = monedaDAO::cargarMonedas();
                 require_once('./view/misCompras.php');
             }
         }
