@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li><a href=""><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
+                        <li><a href="./index.php?controller=carritoCON&action=miCarrito"><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
                         <li><a href=""><span><i class="bi bi-heart icon-nav"></i></span></a></li>
                     </ul>
                 </div>

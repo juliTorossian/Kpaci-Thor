@@ -12,7 +12,8 @@
                          'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
                          'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos'],
-                         'footer'         => ['agregarSub']
+                         'footer'         => ['agregarSub'],
+                         'carritoCON'     => ['miCarrito', 'aumentarCantidad']
                         );
 
     if (array_key_exists($controller, $controllers)){
