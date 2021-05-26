@@ -6,6 +6,7 @@
         public static $FILE_PRO = './json/producto.json';
         public static $FILE_CAT = './json/categoria.json';
         public static $FILE_FAV = './json/favorito.json';
+        public static $FILE_CAR = './json/carrito.json';
 
         public static function cargarProductos(){
             $a_productos    = array();
@@ -145,6 +146,7 @@
             }
             return $a_productos_favoritos;
         }
+
     }
 
 ?>

@@ -12,6 +12,7 @@
         public $proPromo;
         public $proStock;
         public $proDescuento;
+        public $proCantCarrito;
 
         public $categoria;
 
@@ -39,6 +40,10 @@
 
         public function setStock($cantStock){
             $this->proStock = $cantStock;
+        }
+
+        public function setCantCarrito($cantCarrito){
+            $this->proCantCarrito = $cantCarrito;
         }
     }
 

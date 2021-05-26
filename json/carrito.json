@@ -1,0 +1,19 @@
+[
+    {
+        "usuario": "admin",
+        "productos": [
+            {
+                "proId": 15,
+                "cantidad": 1
+            },
+            {
+                "proId": 5,
+                "cantidad": 2
+            },
+            {
+                "proId": 6,
+                "cantidad": 3
+            }
+        ]
+    }
+]
