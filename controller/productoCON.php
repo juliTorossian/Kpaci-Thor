@@ -5,6 +5,8 @@
     require_once('./model/categoria.php');
     require_once('./model/monedaDAO.php');
     require_once('./model/moneda.php');
+    require_once('./model/favoritoDAO.php');
+
 
     class ProductoCON{
 
@@ -31,7 +33,7 @@
 
         public function verProductosFavoritos(){
             $categorias = CategoriaDAO::cargarCategorias();
-            $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
+            $productos  = favoritoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
             $monedas    = monedaDAO::cargarMonedas();
             require_once("view/favoritos.php");
         }

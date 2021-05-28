@@ -5,6 +5,7 @@
     require_once('./model/categoria.php');
     require_once('./model/monedaDAO.php');
     require_once('./model/moneda.php');
+    require_once('./model/favoritoDAO.php');
     
     class UsuarioCON {
 
@@ -68,20 +69,10 @@
             if(!isset($_SESSION['username'])){
                 header('Location: ./index.php?controller=UsuarioCON&action=login');
             }else{
-                $categorias = CategoriaDAO::cargarCategorias();
-                $monedas    = monedaDAO::cargarMonedas();
+                $categorias     = CategoriaDAO::cargarCategorias();
+                $productos_fav  = favoritoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
+                $monedas        = monedaDAO::cargarMonedas();
                 require_once('./view/miCuenta.php');
-            }
-        }
-
-        function favoritos(){
-            if(!isset($_SESSION['username'])){
-                header('Location: ./index.php?controller=UsuarioCON&action=login');
-            }else{
-                $categorias = CategoriaDAO::cargarCategorias();
-                $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
-                $monedas    = monedaDAO::cargarMonedas();
-                require_once('./view/favoritos.php');
             }
         }
 

@@ -57,7 +57,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta  <i class="bi bi-person-circle icon-header-cuenta"></i></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php if (isset($_SESSION["username"])){?>
-                        <a href="#" class="dropdown-item">Mi Cuenta</a>
+                        <a href="./index.php?controller=UsuarioCON&action=miCuenta" class="dropdown-item">Mi Cuenta</a>
                         <a href="index.php?controller=UsuarioCON&action=cerrarsesion" class="dropdown-item">Cerrar Sesion</a>
                     <?php }else{?>
                         <a href="index.php?controller=UsuarioCON&action=loginView" class="dropdown-item">Iniciar Sesion</a>
@@ -93,7 +93,7 @@
                 <div class="col-3">
                     <ul>
                         <li><a href="./index.php?controller=carritoCON&action=miCarrito"><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
-                        <li><a href=""><span><i class="bi bi-heart icon-nav"></i></span></a></li>
+                        <li><a href="./index.php?controller=favoritoCON&action=favoritos"><span><i class="bi bi-heart icon-nav"></i></span></a></li>
                     </ul>
                 </div>
             </div>
