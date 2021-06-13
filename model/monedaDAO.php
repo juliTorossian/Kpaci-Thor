@@ -5,15 +5,44 @@
         public static $FILE_MON    = './json/moneda.json';
 
         public static function cargarMonedas(){
-            $a_moneda = json_decode(file_get_contents(monedaDAO::$FILE_MON), true);
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            //global $mysqli;
+
+            $stmt = $mysqli->prepare("SELECT * FROM mon");
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
             $monedas  = array();
 
-            foreach ($a_moneda as $key => $value) {
-                $moneda = new moneda($value['monId'], $value['monSim'], $value['monNom'], $value['monDiv']);
-                array_push($monedas, $moneda);
+            while($moneda = $resultado->fetch_assoc()){
+                $monId      = $moneda['monId'];
+                $monNombre  = $moneda['monNombre'];
+                $monSimbolo = $moneda['monSimbolo'];
+                $monDivisa  = $moneda['monDivisa'];
+
+                $monedas[] = new moneda($monId, $monSimbolo, $monNombre, $monDivisa);
             }
             return $monedas;
         }
     }
 
+    class moneda{
+        public $monId;
+        public $monSimbolo;
+        public $monNombre;
+        public $monDivisa;
+
+        public function __construct($id, $simbolo, $nombre, $Divisa){
+            $this->monId      = $id;
+            $this->monSimbolo = $simbolo;
+            $this->monNombre  = $nombre;
+            $this->monDivisa  = $Divisa;   
+        }
+
+    }
 ?>

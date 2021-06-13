@@ -1,6 +1,10 @@
 <?php
     require_once('header.php');
 
+    // echo('<pre>');
+    // var_dump($producto);
+    // echo('</pre>');
+
 ?>
 
 
@@ -32,7 +36,7 @@
                     </div>
                     <div style="text-align: right !important;">
                         <?php
-                            $precio = round($producto->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                            $precio = round(intval($producto->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
                             $precio = ($producto->proPromo) ? $precio - $precio * (($producto->proDescuento / 100)) : $precio;
                         ?>
                         <h5 class="h3">$<?php echo($precio);?></h5>

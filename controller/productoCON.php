@@ -1,12 +1,9 @@
 <?php
 
-    require_once('./model/productoDAO.php');
-    require_once('./model/categoriaDAO.php');
-    require_once('./model/categoria.php');
-    require_once('./model/monedaDAO.php');
-    require_once('./model/moneda.php');
-    require_once('./model/favoritoDAO.php');
 
+    include('./model/productoDAO.php');
+    include('./model/categoriaDAO.php');
+    include('./model/monedaDAO.php');
 
     class ProductoCON{
 

@@ -1,5 +1,6 @@
 <?php
-    require_once('./model/producto.php');
+
+    require_once('./conn.php');
 
     class ProductoDAO{
 
@@ -9,117 +10,273 @@
         public static $FILE_CAR = './json/carrito.json';
 
         public static function cargarProductos(){
-            $a_productos    = array();
-            $content        = file_get_contents(ProductoDAO::$FILE_PRO);
-            $a_producto_all = json_decode($content, true);
             
-            foreach ($a_producto_all as $key => $value) {
-                $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
-                $producto->setNuevo($value['nuevo']);
-                $producto->setPromo($value['promocion']);
-                $producto->setStock($value['stock']);
-                $producto->setDescuento($value['descuento']);
-                array_push($a_productos, $producto);
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            //global $mysqli;
+
+            $stmt = $mysqli->prepare("SELECT * FROM prd");
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
+            $a_productos = array();
+
+            while($producto = $resultado->fetch_assoc()){
+                $prdId        = $producto['prdId'];
+                $prdNombre    = $producto['prdNombre'];
+                $prdDesc      = $producto['prdDesc'];
+                $prdPrecio    = $producto['prdPrecio'];
+                $prdNomImg    = $producto['prdNomImg'];
+                $prdStock     = $producto['prdStock'];
+                $prdNuevo     = $producto['prdNuevo'];
+                $prdPromocion = $producto['prdPromocion'];
+                $prdDescuento = $producto['prdDescuento'];
+                $prdCategoria = $producto['categoriaId'];
+
+                $a_productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
             }
             return $a_productos;
         }
 
+
+
         public static function cargarProductosEnPromo(){
+
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+
+            $stmt = $mysqli->prepare("SELECT * FROM prd WHERE prdPromocion = ?");
+            $s = 'S';
+            $stmt->bind_param("s", $s);
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
             $a_productos_promo = array();
-            $content           = file_get_contents(ProductoDAO::$FILE_PRO);
-            $a_producto_all    = json_decode($content, true);
             
-            foreach ($a_producto_all as $key => $value) {
-                if ($value['promocion'] == 'S') {
-                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
-                    $producto->setNuevo($value['nuevo']);
-                    $producto->setPromo($value['promocion']);
-                    $producto->setStock($value['stock']);
-                    $producto->setDescuento($value['descuento']);
-                    array_push($a_productos_promo, $producto);
-                }
+            while($producto = $resultado->fetch_assoc()){
+                $prdId        = $producto['prdId'];
+                $prdNombre    = $producto['prdNombre'];
+                $prdDesc      = $producto['prdDesc'];
+                $prdPrecio    = $producto['prdPrecio'];
+                $prdNomImg    = $producto['prdNomImg'];
+                $prdStock     = $producto['prdStock'];
+                $prdNuevo     = $producto['prdNuevo'];
+                $prdPromocion = $producto['prdPromocion'];
+                $prdDescuento = $producto['prdDescuento'];
+                $prdCategoria = $producto['categoriaId'];
+
+                $a_productos_promo[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
             }
             return $a_productos_promo;
         }
 
         public static function cargarProductosNuevos(){
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+
+            $stmt = $mysqli->prepare("SELECT * FROM prd WHERE prdNuevo = ?");
+            $s = 'S';
+            $stmt->bind_param("s", $s);
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
             $a_productos_nuevos = array();
-            $content            = file_get_contents(ProductoDAO::$FILE_PRO);
-            $a_producto_all     = json_decode($content, true);
             
-            foreach ($a_producto_all as $key => $value) {
-                if ($value['nuevo'] == 'S') {
-                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
-                    $producto->setNuevo($value['nuevo']);
-                    $producto->setPromo($value['promocion']);
-                    $producto->setStock($value['stock']);
-                    $producto->setDescuento($value['descuento']);
-                    array_push($a_productos_nuevos, $producto);
-                }
+            while($producto = $resultado->fetch_assoc()){
+                $prdId        = $producto['prdId'];
+                $prdNombre    = $producto['prdNombre'];
+                $prdDesc      = $producto['prdDesc'];
+                $prdPrecio    = $producto['prdPrecio'];
+                $prdNomImg    = $producto['prdNomImg'];
+                $prdStock     = $producto['prdStock'];
+                $prdNuevo     = $producto['prdNuevo'];
+                $prdPromocion = $producto['prdPromocion'];
+                $prdDescuento = $producto['prdDescuento'];
+                $prdCategoria = $producto['categoriaId'];
+
+                $a_productos_nuevos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
             }
             return $a_productos_nuevos;
         }
 
         public static function cargarProductoPorId($productoId){
-            $content        = file_get_contents(ProductoDAO::$FILE_PRO);
-            $a_producto_all = json_decode($content, true);
-            $producto       = null;
+        
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+
+            $stmt = $mysqli->prepare("SELECT * FROM prd WHERE prdId = ?");
+            $stmt->bind_param("i", $productoId);
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
+            $producto    = null;
             
-            foreach ($a_producto_all as $key => $value) {
-                if ($value['proId'] == $productoId) {
-                    $producto = new Producto($value['proId'],$value['proNombre'],$value['proDesc'],$value['proValores'],$value['proPrecio'],$value['categoriaId'], $value['proNomImg']);
-                    $producto->setNuevo($value['nuevo']);
-                    $producto->setPromo($value['promocion']);
-                    $producto->setStock($value['stock']);
-                    $producto->setDescuento($value['descuento']);
-                }
+            while($prd = $resultado->fetch_assoc()){
+                $prdId        = $prd['prdId'];
+                $prdNombre    = $prd['prdNombre'];
+                $prdDesc      = $prd['prdDesc'];
+                $prdPrecio    = $prd['prdPrecio'];
+                $prdNomImg    = $prd['prdNomImg'];
+                $prdStock     = $prd['prdStock'];
+                $prdNuevo     = $prd['prdNuevo'];
+                $prdPromocion = $prd['prdPromocion'];
+                $prdDescuento = $prd['prdDescuento'];
+                $prdCategoria = $prd['categoriaId'];
+
+                $producto = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
             }
             return $producto;
         }
 
 
         public static function cargarProductosPorCategoria($categoriaId){
-            $productos = array();
-            $content            = file_get_contents(ProductoDAO::$FILE_CAT);
-            $a_categorias       = json_decode($content, true);
-            $content            = file_get_contents(ProductoDAO::$FILE_PRO);
-            $a_producto_all     = json_decode($content, true);
+
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+
+            $stmt = $mysqli->prepare("SELECT categoriaTieneSub FROM categoria WHERE categoriaId = ?");
+            $stmt->bind_param("s", $categoriaId);
+            $stmt->execute();
+            $tieneSub = $stmt->get_result()->fetch_assoc()['categoriaTieneSub'];
             
-            foreach ($a_categorias as $key => $value) {
-                if ($value['cateId'] == $categoriaId){
-                    if ($value['tieneSub'] == 'N'){
-                        foreach ($a_producto_all as $key => $valueP) {
-                            if ($valueP['categoriaId'] == $categoriaId) {
-                                $producto = new Producto($valueP['proId'],$valueP['proNombre'],$valueP['proDesc'],$valueP['proValores'],$valueP['proPrecio'],$valueP['categoriaId'], $valueP['proNomImg']);
-                                $producto->setNuevo($valueP['nuevo']);
-                                $producto->setPromo($valueP['promocion']);
-                                $producto->setStock($valueP['stock']);
-                                $producto->setDescuento($valueP['descuento']);
-                                array_push($productos, $producto);
-                            }
-                        }
-                    }else{
-                        foreach ($a_categorias as $key => $valor) {
-                            if ($valor['catePadre'] == $categoriaId){
-                                $categoriaIdACT = $valor['cateId'];
-                                foreach ($a_producto_all as $key => $valueP) {
-                                    if ($valueP['categoriaId'] == $categoriaIdACT) {
-                                        $producto = new Producto($valueP['proId'],$valueP['proNombre'],$valueP['proDesc'],$valueP['proValores'],$valueP['proPrecio'],$valueP['categoriaId'], $valueP['proNomImg']);
-                                        $producto->setNuevo($valueP['nuevo']);
-                                        $producto->setPromo($valueP['promocion']);
-                                        $producto->setStock($valueP['stock']);
-                                        $producto->setDescuento($valueP['descuento']);
-                                        array_push($productos, $producto);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            $query = '';
+            if($tieneSub == 'N'){
+                $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaId = ?";
+            }else{
+                $query = "SELECT * FROM prd INNER JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaPadre = ?";
+            }
+            $stmt = $mysqli->prepare($query);
+            $stmt->bind_param("s", $categoriaId);
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
+            $productos = array();
+            
+            while($producto = $resultado->fetch_assoc()){
+                $prdId        = $producto['prdId'];
+                $prdNombre    = $producto['prdNombre'];
+                $prdDesc      = $producto['prdDesc'];
+                $prdPrecio    = $producto['prdPrecio'];
+                $prdNomImg    = $producto['prdNomImg'];
+                $prdStock     = $producto['prdStock'];
+                $prdNuevo     = $producto['prdNuevo'];
+                $prdPromocion = $producto['prdPromocion'];
+                $prdDescuento = $producto['prdDescuento'];
+                $prdCategoria = $producto['categoriaId'];
+
+                $productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
             }
             return $productos;
         }
 
+        public static function cargarProductosFavoritosPorUsuario($usuario){
+            
+            $HOST   = 'localhost';
+            $USER   = 'root';
+            $PASS   = '';
+            $DBNAME = 'kpacithor';
+
+            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+
+            $stmt = $mysqli->prepare("SELECT usrId FROM usuario WHERE usrNombre = ?");
+            $stmt->bind_param("s", $usuario);
+            $stmt->execute();
+
+            $usrId = $stmt->get_result()->fetch_assoc()['usrId'];
+
+            $stmt = $mysqli->prepare("SELECT * FROM favorito INNER JOIN prd_fav ON favorito.favoritoId = prd_fav.favoritoId INNER JOIN prd ON prd_fav.prdId = prd.prdId WHERE favorito.usrId = ?");
+            $stmt->bind_param("i", $usrId);
+            $stmt->execute();
+
+            $resultado   = $stmt->get_result();
+            $a_productos_favoritos   = array();
+            
+            while($producto = $resultado->fetch_assoc()){
+                $prdId        = $producto['prdId'];
+                $prdNombre    = $producto['prdNombre'];
+                $prdDesc      = $producto['prdDesc'];
+                $prdPrecio    = $producto['prdPrecio'];
+                $prdNomImg    = $producto['prdNomImg'];
+                $prdStock     = $producto['prdStock'];
+                $prdNuevo     = $producto['prdNuevo'];
+                $prdPromocion = $producto['prdPromocion'];
+                $prdDescuento = $producto['prdDescuento'];
+                $prdCategoria = $producto['categoriaId'];
+
+                $a_productos_favoritos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+            }
+            return $a_productos_favoritos;
+        }
+    }
+
+
+
+
+    class Producto{
+
+        public $productoId;
+        public $proNombre;
+        public $proNomImagen;
+        public $proDescripcion;
+        public $proValores;
+        public $proPrecio;
+        public $proNuevo;
+        public $proPromo;
+        public $proStock;
+        public $proDescuento;
+        public $proCantCarrito;
+
+        public $categoria;
+
+        public function __construct($id, $nombre, $desc, $precio, $categoria, $nomImg){
+            $this->productoId     = $id;
+            $this->proNombre      = $nombre;
+            $this->proNomImagen   = $nomImg;
+            $this->proDescripcion = $desc;
+            //$this->proValores     = $valores;
+            $this->proPrecio      = $precio;
+            $this->categoriaId    = $categoria;
+        }
+
+        public function setNuevo($esNuevo){
+            $this->proNuevo = ($esNuevo == 'S');
+        }
+
+        public function setPromo($estaPromo){
+            $this->proPromo = ($estaPromo == 'S');
+        }
+
+        public function setDescuento($porcDescuento){
+            $this->proDescuento = $porcDescuento;
+        }
+
+        public function setStock($cantStock){
+            $this->proStock = $cantStock;
+        }
+
+        public function setCantCarrito($cantCarrito){
+            $this->proCantCarrito = $cantCarrito;
+        }
     }
 
 ?>

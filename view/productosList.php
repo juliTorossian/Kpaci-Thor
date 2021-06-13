@@ -1,6 +1,10 @@
 <?php
     require_once('header.php');
 
+    // echo('<pre>');
+    // var_dump($productos);
+    // echo('</pre>');
+    
 ?>
 
 
@@ -42,7 +46,7 @@
                     <?php
                                 foreach ($categorias as $key => $valor) {
                                     $subId        = $valor->cateId;
-                                    $idPadre       = $valor->catePadre;
+                                    $idPadre      = $valor->catePadre;
                                     $nombreSubCat = $valor->cateNombre;
                                     $tieneSub     = $valor->tieneSub;
                                     if ($id == $idPadre) {

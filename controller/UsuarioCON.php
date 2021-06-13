@@ -2,9 +2,7 @@
     require_once("./model/UsuarioDAO.php");
     require_once('./model/productoDAO.php');
     require_once('./model/categoriaDAO.php');
-    require_once('./model/categoria.php');
     require_once('./model/monedaDAO.php');
-    require_once('./model/moneda.php');
     require_once('./model/favoritoDAO.php');
     
     class UsuarioCON {
