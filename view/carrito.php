@@ -2,7 +2,7 @@
     $precioTotal = 0;
     if (!empty($productos)){
         foreach ($productos as $key => $value) {
-            $precioTotal += $value->proPrecio;
+            $precioTotal += intval($value->proPrecio);
         }
     }
 
@@ -24,7 +24,7 @@
                 <?php
                     if (!empty($productos)){
                         foreach ($productos as $key => $value) {
-                            $precio = round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                            $precio = round(intval($value->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
                             $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
                 ?>
                 <div class="card mb-2">
