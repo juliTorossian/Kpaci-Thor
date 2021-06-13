@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS categoria(
     categoriaId       INT             AUTO_INCREMENT PRIMARY KEY,
     categoriaNombre   VARCHAR(45)     NOT NULL,
     categoriaTieneSub CHAR(1)         NOT NULL,
-    categoriaPadre    INT             NOT NULL,
+    categoriaPadre    INT             NULL,
     FOREIGN KEY (categoriaPadre) REFERENCES categoria(categoriaId)
 );
 
@@ -79,11 +79,78 @@ CREATE TABLE IF NOT EXISTS prd_car(
 
 
 
-INSERT INTO categoria (categoriaNombre, categoriaTieneSub, categoriaPadre)
-    VALUES  ('Sensores', 'N', 0),
-            ('Leds', 'N', 0),
-            ('Resistencias', 'N', 0),
-            ('Capacitores', 'N', 0),
-            ('Herramientas', 'S', 0);
+INSERT INTO categoria (categoriaNombre, categoriaTieneSub)
+    VALUES  ('Sensores', 'N'),
+            ('Leds', 'N'),
+            ('Resistencias', 'N'),
+            ('Capacitores', 'N'),
+            ('Herramientas', 'S'),
+            ('Medicion', 'N'),
+            ('Soldadura', 'N');
+
+UPDATE categoria
+    SET categoriaPadre = 5
+    WHERE categoriaId = 6 OR
+          categoriaId = 7;
 
 SELECT * FROM categoria;
+
+INSERT INTO prd	(prdNombre, prdDesc, prdPrecio, prdNomImg, prdStock, prdNuevo, prdPromocion, prdDescuento, categoriaId)
+    VALUES('Sensor Efecto Hall A3144', '', 95, 'sensor-hall-a3144', 200, 'N', 'N',null, 1),
+          ('Sensor Efecto Hall 49e', '', 99.99, 'sensor-hall-49e', 150, 'N', 'S', 10, 1),
+          ('Sensor Efecto Hall A1321', '', 300, 'sensor-hall-a1321', 150, 'N', 'N',null, 1),
+          ('Lote 10 leds 3mm Rojo', '', 110, 'Leds-3mm-Rojo', 400, 'S', 'S', 10, 2),
+          ('Lote 10 Leds 3mm Verde', '', 110, 'Leds-3mm-Verde', 400, 'S', 'S', 10, 2),
+          ('Lote 10 Leds 3mm Azul', '', 110, 'Leds-3mm-Azul', 400, 'S', 'S', 10, 2),
+          ('Lote 5 Leds 10mm Blanco', '', 110, 'Leds-5mm-Blanco', 350, 'S', 'S', 20, 2),
+          ('Lote 50 Resistencias 100 Ohm', '', 96, 'resistencia-100-ohm', 330, 'N', 'N',null, 3),
+          ('Lote 10 Resistencias 470 Ohm', '', 280, 'resistencia-470-ohm', 150, 'N', 'N',null, 3),
+          ('Lote 10 Resistencias 10 Ohm', '', 276, 'resistencia-10-ohm', 150, 'N', 'N',null, 3),
+          ('Capacitor Electrolitico 470uf 16v  X10', '', 97, 'capacitor-470-16', 220, 'S', 'N',null, 4),
+          ('Capacitor Electrolitico 680uf 25v', '', 320, 'capacitor-680-25', 95, 'S', 'N',null, 4),
+          ('Capacitor Electrolitico 1000uf 25v  X10', '', 449, 'capacitor-1000-25', 52, 'S', 'N',null, 4),
+          ('Multimetro Digital Ut33c+', '', 1695, 'multimetro-ut33c+', 360, 'N', 'S', 15, 6),
+          ('Multimetro Digital T830d', '', 448, 'multimetro-t830d', 150, 'N', 'N',null, 6),
+          ('Pinza Amperometrica Ut201+', '', 3200, 'pinza-amperometrica-ut201+', 265, 'N', 'S', 10, 6),
+          ('Soldador Pistola 30-70 Watts', '', 1150, 'soldador-pistola', 640, 'N', 'N',null, 7),
+          ('Soldador Estaño tipo lapiz madera 40 Watts', '', 430, 'soldador-lapiz', 210, 'S', 'N',null, 7),
+          ('Estaño Tubo 3mts 60/40 0.8mm', '', 165, 'estanio-rollo', 100, 'S', 'N',null, 7),
+          ('Estaño 100grs 60/40 0.7mm', '', 595, 'estanio-rollo', 20, 'N', 'N',null, '7');
+
+
+SELECT * FROM prd;
+
+INSERT INTO mon	(monNombre, monSimbolo, monDivisa) 
+    VALUES('pesos', 'ARS$', 1),
+          ('dolar', 'U$S', 145);
+
+SELECT * FROM mon;
+
+INSERT INTO usuario (usrNombre, usrMail, usrPass)
+    VALUES ('admin', 'admin@admin.com', 'admin');
+
+SELECT * FROM usuario;
+
+INSERT INTO favorito(usrId) 
+    VALUES(1);
+INSERT INTO prd_fav (prdId, favoritoId)
+    VALUES (15, 1),
+           (5, 1),
+           (9, 1);
+
+SELECT * FROM favorito
+    INNER JOIN prd_fav ON favorito.favoritoId = prd_fav.favoritoId
+    INNER JOIN prd ON prd_fav.prdId = prd.prdId
+    WHERE favorito.usrId = 1;
+
+INSERT INTO carrito(usrId) 
+    VALUES(1);
+INSERT INTO prd_car (prdId, carritoId, prdCantCar)
+    VALUES (15, 1, 1),
+           (5, 1, 2),
+           (9, 1, 4);
+
+SELECT * FROM carrito
+    INNER JOIN prd_car ON carrito.carritoId = prd_car.carritoId
+    INNER JOIN prd ON prd_car.prdId = prd.prdId
+    WHERE carrito.usrId = 1;
