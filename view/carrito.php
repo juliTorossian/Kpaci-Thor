@@ -23,8 +23,11 @@
             <div class="px-5">
                 <?php
                     if (!empty($productos)){
+                        $posicion = -1;
                         foreach ($productos as $key => $value) {
-                            $precio = round(intval($value->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                            $posicion += 1;
+                            $precio = round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+
                             $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
                 ?>
                 <div class="card mb-2">
@@ -38,16 +41,16 @@
                             </div>
                             <div class="col-2 my-auto">
                                 <div class="input-group mb-3">
-                                <a href="" class="btn btn-outline-secondary" type="button" id="button-addon1">-</a>
-                                <input type="text" value="<?php echo($value->proCantCarrito);?>" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                <a href="./index.php?controller=carritoCON&action=aumentarCantidad" class="btn btn-outline-secondary" type="button" id="button-addon1">+</a>
+                                <a onclick="restar(<?php echo($posicion);?>)" class="btn btn-outline-secondary" type="button" id="bRestar">-</a>
+                                <span class="input-group-text" id="sCant"><?php echo($value->proCantCarrito);?></span>
+                                <a onclick="sumar(<?php echo($posicion);?>)" class="btn btn-outline-secondary" type="button" id="bSumar">+</a>
                                 </div>
                             </div>
-                            <!-- <div class="col-2 my-auto text-center">
-                                <h5 style="border-right: 1px solid gray;">$<?php echo($precio); ?></h5>
-                            </div> -->
-                            <div class="col-4 my-auto text-center">
-                                <h5><?php echo("$symPrecio $precio"); ?></h5>
+                            <div class="col-2 my-auto text-center">
+                                <h5 style="border-right: 1px solid gray;" id="preIndPrd"><?php echo("$symPrecio $precio"); ?></h5>
+                            </div>
+                            <div class="col-2 my-auto text-center">
+                                <h5 id="preTotPrd"><?php echo("$symPrecio $precio"); ?></h5>
                             </div>
                         </div>
                     </div>
@@ -66,12 +69,14 @@
                 <div class="row">
                     <div class="col my-auto"></div>
                     <div class="col-2 my-auto text-center"><h5>Total:</h5></div>
-                    <div class="col-4 my-auto text-center"><h5><?php echo("$symPrecio $precioTotal"); ?></h5></div>
+                    <div class="col-4 my-auto text-center"><h5 id='preTotal'><?php echo("$symPrecio $precioTotal"); ?></h5></div>
                 </div>
             </div>
         </div>
             
     </div>
+    
+    <script src="./public/js/carrito.js"></script>
 
 </main>
 

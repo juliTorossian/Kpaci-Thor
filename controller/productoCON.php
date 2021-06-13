@@ -1,5 +1,6 @@
 <?php
 
+
     include('./model/productoDAO.php');
     include('./model/categoriaDAO.php');
     include('./model/monedaDAO.php');
@@ -29,7 +30,7 @@
 
         public function verProductosFavoritos(){
             $categorias = CategoriaDAO::cargarCategorias();
-            $productos  = ProductoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
+            $productos  = favoritoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
             $monedas    = monedaDAO::cargarMonedas();
             require_once("view/favoritos.php");
         }

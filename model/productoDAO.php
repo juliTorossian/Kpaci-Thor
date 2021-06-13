@@ -227,7 +227,6 @@
             }
             return $a_productos_favoritos;
         }
-
     }
 
 
