@@ -1,6 +1,10 @@
 <?php
     require_once('header.php');
 
+    // echo('<pre>');
+    // var_dump($producto);
+    // echo('</pre>');
+
 ?>
 
 
@@ -10,7 +14,7 @@
 
             <div class="row">
                 <div class="col-7">
-                    <img src="https://via.placeholder.com/540.png" alt="Imagen producto" class="px-auto">
+                    <img src="./public/img/img_productos/<?php echo($producto->proNomImagen);?>_550x550.jpg" alt="Imagen producto" class="px-auto">
                 </div>
                 <div class="col-5" style="text-align: center;">
                     <h2><?php echo($producto->proNombre);?></h2>
@@ -32,13 +36,11 @@
                     </div>
                     <div style="text-align: right !important;">
                         <?php
-                            $precio = $producto->proPrecio;
-                            $precio = ($producto->proPromo) ? $producto->proPrecio * (1 + ($producto->proDescuento / 100)) : $producto->proPrecio;
+                            $precio = round(intval($producto->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                            $precio = ($producto->proPromo) ? $precio - $precio * (($producto->proDescuento / 100)) : $precio;
                         ?>
                         <h5 class="h3">$<?php echo($precio);?></h5>
                     </div>
-                    
-
                 </div>
             </div>
         </div>

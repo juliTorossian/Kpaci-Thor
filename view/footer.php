@@ -1,14 +1,50 @@
 
 
+<?php
+
+    if(isset($_SESSION['error'])){
+?>
+    <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div style="margin-left: 10px;">
+            <?php   
+                echo($_SESSION['error']); 
+                unset($_SESSION['error']);
+            ?>
+        </div>        
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+    }else{
+        if (isset($_SESSION['msg'])) {
+?>
+    <div class="alert alert-success alert-dismissible d-flex align-items-center" role="alert">
+        <i class="bi bi-check-circle-fill"></i>
+        <div style="margin-left: 10px;">
+            <?php   
+                echo($_SESSION['msg']); 
+                unset($_SESSION['msg']);
+            ?>
+        </div>        
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+        }
+    }
+
+?>
+
     <footer>
         <div class="container-fluid">
             <div class="row sup pt-3 px-5">
                 <div class="col-4 p-4">
                     <p style="font-size: 28px;">Suscribite para estar al dia!</p>
-                    <div class="input-group input-group-color" style="z-index: 2;">
-                        <input  type="text" class="form-control input-group-der" placeholder="mail@mail.com" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"> <i class="bi bi-envelope-fill"></i> Suscribirse</button>
-                    </div>
+                    <form action="./index.php?controller=footer&action=agregarSub" method="post">
+                        <div class="input-group input-group-color" style="z-index: 2;">
+                            <input  type="mail" name="mail" class="form-control input-group-der" placeholder="mail@mail.com" aria-label="Example text with button addon" aria-describedby="button-addon1" require>
+                            <button class="btn btn-outline-secondary input-group-izq input-group-color" type="submit" id="button-addon2"> <i class="bi bi-envelope-fill"></i> Suscribirse</button>
+                        </div>
+                    </form>
                     <!--<div class="icon-fondo">
                         <i class="bi bi-envelope"></i>
                     </div>-->
@@ -40,7 +76,7 @@
                                 <li>
                                     <p>CUENTA</p>
                                     <ul>
-                                        <li><a href="./index.php?controller=UsuarioCON&action=favoritos">Favoritos</a></li>
+                                        <li><a href="./index.php?controller=favoritoCON&action=favoritos">Favoritos</a></li>
                                         <li><a href="./index.php?controller=UsuarioCON&action=miCuenta">Mi Cuenta</a></li>
                                         <li><a href="./index.php?controller=UsuarioCON&action=misCompras">Mis Compras</a></li>
                                     </ul>

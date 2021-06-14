@@ -11,7 +11,10 @@
     $controllers = array('home'           => ['inicio'],
                          'UsuarioCON'     => ['login', 'registrar', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
-                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos']
+                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos'],
+                         'footer'         => ['agregarSub'],
+                         'carritoCON'     => ['miCarrito', 'aumentarCantidad'],
+                         'favoritoCON'    => ['favoritos', 'favoritosOnly']
                         );
 
     if (array_key_exists($controller, $controllers)){

@@ -1,7 +1,19 @@
 <?php 
 
+    //unset($_SESSION['moneda']);
     //session_start();
+    if(isset($_GET['moneda'])){
+        $_SESSION['moneda'] = $monedas[$_GET['moneda'] - 1]->monId;
+    }else{
+        if(!isset($_SESSION['moneda'])){
+            $_SESSION['moneda'] = $monedas[0]->monId;
+        }
+    }
 
+    // echo('<pre>');
+    // // print_r($_SESSION['moneda']);
+    // echo($_SERVER['HTTP_SELF']);
+    // echo('</pre>');
 ?>
 
 <!doctype html>
@@ -27,18 +39,25 @@
                 <li class="nav-item item-header"><i class="bi bi-envelope-fill icon-header"></i> <a href="mailto:julian.torossian@davinci.edu.ar">julian.torossian@davinci.edu.ar</a></li>
                 <li class="nav-item item-header"><i class="bi bi-geo-fill icon-header"     ></i> <a href="https://goo.gl/maps/4XdSbHynP8342Z9r5" target="blank">Av. Corrientes 2037, C1001 CABA</a></li>
             </ul>
-            <form class="d-flex">
-                <select class="form-select selection-header">
-                    <option value="1" selected>ARS$</option>
-                    <option value="2">USD</option>
-                    <option value="3">UY$</option>
-                </select>
-            </form>
+            <div>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo($monedas[intval($_SESSION['moneda'])-1]->monSimbolo); ?></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 65px;">
+                    <?php
+                        foreach ($monedas as $key => $value) {
+                            if($value->monId != $monedas[intval($_SESSION['moneda'])-1]->monId){
+                    ?>
+                    <a href="index.php?moneda=<?php echo($value->monId);?>"class="dropdown-item"><?php echo($value->monSimbolo); ?></a>
+                    <?php
+                            }
+                        }
+                    ?>
+                </div>
+            </div>
             <div>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta  <i class="bi bi-person-circle icon-header-cuenta"></i></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php if (isset($_SESSION["username"])){?>
-                        <a href="#" class="dropdown-item">Mi Cuenta</a>
+                        <a href="./index.php?controller=UsuarioCON&action=miCuenta" class="dropdown-item">Mi Cuenta</a>
                         <a href="index.php?controller=UsuarioCON&action=cerrarsesion" class="dropdown-item">Cerrar Sesion</a>
                     <?php }else{?>
                         <a href="index.php?controller=UsuarioCON&action=login" class="dropdown-item">Iniciar Sesion</a>
@@ -73,8 +92,8 @@
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li><a href=""><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
-                        <li><a href=""><span><i class="bi bi-heart icon-nav"></i></span></a></li>
+                        <li><a href="./index.php?controller=carritoCON&action=miCarrito"><span><i class="bi bi-basket3 icon-nav"></i></span></a></li>
+                        <li><a href="./index.php?controller=favoritoCON&action=favoritos"><span><i class="bi bi-heart icon-nav"></i></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -145,4 +164,17 @@
                 </div>
             </div>
         </div>
+
+        <form action="" method="POST">
+        <input type="hidden" id="myReport" value=""/>
+        </form>
+
+        <script>
+            function takeValue(){
+            var sel = document.getElementById("monedaSeleccionada");
+            var selectedReport = sel.options[sel.selectedIndex].text;
+            //put the selected value in the hidden input value
+            document.getElementById("myReport").value=selectedReport;
+            }
+        </script>
 

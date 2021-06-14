@@ -1,6 +1,10 @@
 <?php
     require_once('header.php');
 
+    // echo('<pre>');
+    // var_dump($productos);
+    // echo('</pre>');
+    
 ?>
 
 
@@ -42,7 +46,7 @@
                     <?php
                                 foreach ($categorias as $key => $valor) {
                                     $subId        = $valor->cateId;
-                                    $idPadre       = $valor->catePadre;
+                                    $idPadre      = $valor->catePadre;
                                     $nombreSubCat = $valor->cateNombre;
                                     $tieneSub     = $valor->tieneSub;
                                     if ($id == $idPadre) {
@@ -86,16 +90,16 @@
                             $imprime = false;
 
                             $nombrePro   = $value->proNombre;
-                            $precioPro   = $value->proPrecio;
+                            $precioPro   = round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
                             $descPro     = $value->proDescripcion;
-                            //$descImg     = "inc\imagenes\\".$nombrePro."\\".$nombrePro."_min.jpg";
+                            $descImg     = $value->proNomImagen."_220x220.jpg";
                             $linkDetalle = "./index.php?controller=productoCON&action=verProducto&productoId=$value->productoId"
 
                     ?>
 
                     <div class="col-4 mb-1">
                         <div class="card h-100">
-                            <a href="<?php echo($linkDetalle);?>"><img class="card-img-top" src="https://via.placeholder.com/220.png" alt="<?php echo($nombrePro)?>"></a>
+                            <a href="<?php echo($linkDetalle);?>"><img class="card-img-top" src="./public/img/img_productos/<?php echo($descImg);?>" alt="<?php echo($nombrePro)?>"></a>
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="<?php echo($linkDetalle);?>"><?php echo($nombrePro)?></a>
