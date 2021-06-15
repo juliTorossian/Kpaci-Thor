@@ -5,13 +5,8 @@
         public static $FILE_MON    = './json/moneda.json';
 
         public static function cargarMonedas(){
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
-            //global $mysqli;
+            
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT * FROM mon");
             $stmt->execute();

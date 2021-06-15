@@ -5,13 +5,7 @@ class CategoriaDAO{
         public static $FILE_CAT    = './json/categoria.json';
 
         public static function cargarCategorias(){
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
-            //global $mysqli;
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT * FROM categoria");
             $stmt->execute();

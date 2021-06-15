@@ -1,6 +1,6 @@
 <?php
 
-    require_once('./conn.php');
+    include('./conn.php');
 
     class ProductoDAO{
 
@@ -11,13 +11,7 @@
 
         public static function cargarProductos(){
             
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
-            //global $mysqli;
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT * FROM prd");
             $stmt->execute();
@@ -46,12 +40,7 @@
 
         public static function cargarProductosEnPromo(){
 
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT * FROM prd WHERE prdPromocion = ?");
             $s = 'S';
@@ -79,12 +68,7 @@
         }
 
         public static function cargarProductosNuevos(){
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT * FROM prd WHERE prdNuevo = ?");
             $s = 'S';
@@ -113,12 +97,7 @@
 
         public static function cargarProductoPorId($productoId){
         
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT * FROM prd WHERE prdId = ?");
             $stmt->bind_param("i", $productoId);
@@ -147,12 +126,7 @@
 
         public static function cargarProductosPorCategoria($categoriaId){
 
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT categoriaTieneSub FROM categoria WHERE categoriaId = ?");
             $stmt->bind_param("s", $categoriaId);
@@ -191,12 +165,7 @@
 
         public static function cargarProductosFavoritosPorUsuario($usuario){
             
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT usrId FROM usuario WHERE usrNombre = ?");
             $stmt->bind_param("s", $usuario);
