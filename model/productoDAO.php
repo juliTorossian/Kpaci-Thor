@@ -19,7 +19,7 @@
             $resultado   = $stmt->get_result();
             $a_productos = array();
 
-            while($producto = $resultado->fetch_assoc()){
+            while($producto = $resultado->fetch_assoc()){              
                 $prdId        = $producto['prdId'];
                 $prdNombre    = $producto['prdNombre'];
                 $prdDesc      = $producto['prdDesc'];
@@ -31,7 +31,7 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $a_productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $a_productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $a_productos;
         }
@@ -62,7 +62,7 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $a_productos_promo[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $a_productos_promo[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $a_productos_promo;
         }
@@ -90,7 +90,7 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $a_productos_nuevos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $a_productos_nuevos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $a_productos_nuevos;
         }
@@ -118,7 +118,7 @@
                 $prdDescuento = $prd['prdDescuento'];
                 $prdCategoria = $prd['categoriaId'];
 
-                $producto = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $producto = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $producto;
         }
@@ -158,7 +158,7 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $productos;
         }
@@ -192,7 +192,7 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $a_productos_favoritos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $a_productos_favoritos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $a_productos_favoritos;
         }
@@ -217,7 +217,7 @@
 
         public $categoria;
 
-        public function __construct($id, $nombre, $desc, $precio, $categoria, $nomImg){
+        public function __construct($id, $nombre, $desc, $precio, $categoria, $nomImg, $esNuevo, $estaPromo, $porcDescuento, $cantStock){
             $this->productoId     = $id;
             $this->proNombre      = $nombre;
             $this->proNomImagen   = $nomImg;
@@ -225,6 +225,10 @@
             //$this->proValores     = $valores;
             $this->proPrecio      = $precio;
             $this->categoriaId    = $categoria;
+            $this->proNuevo = ($esNuevo == 'S');
+            $this->proPromo = ($estaPromo == 'S');
+            $this->proDescuento = $porcDescuento;
+            $this->proStock = $cantStock;
         }
 
         public function setNuevo($esNuevo){

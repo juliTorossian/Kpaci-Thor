@@ -17,12 +17,6 @@
                 require_once('./view/carrito.php');
             }
         }
-
-        function aumentarCantidad(){
-
-            carritoDAO::sumarCantidadAUnProducto($_SESSION['username'], 6);
-            $this->miCarrito();
-        }
     }
 
 

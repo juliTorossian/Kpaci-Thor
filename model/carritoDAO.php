@@ -9,12 +9,7 @@
         
         public static function cargarProductosCarritoPorUsuario($usuario){
 
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT usrId FROM usuario WHERE usrNombre = ?");
             $stmt->bind_param("s", $usuario);

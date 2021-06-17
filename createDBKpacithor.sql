@@ -59,21 +59,21 @@ CREATE TABLE IF NOT EXISTS prd_fav(
     FOREIGN KEY (favoritoId) REFERENCES favorito(favoritoId)
 );
 
-DROP TABLE IF EXISTS carrito;
-CREATE TABLE IF NOT EXISTS carrito(
-    carritoId     INT             AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS compraHis;
+CREATE TABLE IF NOT EXISTS compraHis(
+    compraHisId   INT             AUTO_INCREMENT PRIMARY KEY,
     usrId         INT             NOT NULL,
     FOREIGN KEY (usrId) REFERENCES usuario(usrId)
 );
 
-DROP TABLE IF EXISTS prd_car;
-CREATE TABLE IF NOT EXISTS prd_car(
-    ped_carId     INT             AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS prd_com;
+CREATE TABLE IF NOT EXISTS prd_com(
+    ped_comId     INT             AUTO_INCREMENT PRIMARY KEY,
     prdId         INT             NOT NULL,
-    carritoId     INT             NOT NULL,
+    compraHisId   INT             NOT NULL,
     prdCantCar    INT             NOT NULL,
     FOREIGN KEY (prdId) REFERENCES prd(prdId),
-    FOREIGN KEY (carritoId) REFERENCES carrito(carritoId)
+    FOREIGN KEY (compraHisId) REFERENCES compraHis(compraHisId)
 );
 
 
@@ -143,14 +143,14 @@ SELECT * FROM favorito
     INNER JOIN prd ON prd_fav.prdId = prd.prdId
     WHERE favorito.usrId = 1;
 
-INSERT INTO carrito(usrId) 
+INSERT INTO compraHis(usrId) 
     VALUES(1);
-INSERT INTO prd_car (prdId, carritoId, prdCantCar)
+INSERT INTO prd_com (prdId, compraHisId, prdCantCar)
     VALUES (15, 1, 1),
            (5, 1, 2),
            (9, 1, 4);
 
-SELECT * FROM carrito
-    INNER JOIN prd_car ON carrito.carritoId = prd_car.carritoId
-    INNER JOIN prd ON prd_car.prdId = prd.prdId
-    WHERE carrito.usrId = 1;
+SELECT * FROM compraHis
+    INNER JOIN prd_com ON compraHis.compraHisId = prd_com.compraHisId
+    INNER JOIN prd ON prd_com.prdId = prd.prdId
+    WHERE compraHis.usrId = 1;
