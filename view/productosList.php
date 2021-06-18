@@ -79,6 +79,7 @@
                 <div class="row">
                     <?php
                     $imprime = false;
+                    $posicion = -1;
                     foreach ($productos as $key => $value) {
                         if(!(isset($_SESSION["categoria"])) or $_SESSION["categoria"] == 0){
                             $imprime = true;
@@ -87,7 +88,9 @@
                         }
 
                         if($imprime){
+                            $posicion += 1;
                             $imprime = false;
+                            $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
 
                             $nombrePro   = $value->proNombre;
                             $precioPro   = round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
@@ -96,31 +99,61 @@
                             $linkDetalle = "./index.php?controller=productoCON&action=verProducto&productoId=$value->productoId"
 
                     ?>
+                    
+                    <div class="p-1 col-4<?php echo(($posicion > 2) ? ' mt-4' : ''); ?>"> 
+                    
+                        <h5 style="text-overflow: ellipsis;"><?php echo($nombrePro)?></h5>
 
-                    <div class="col-4 mb-1">
-                        <div class="card h-100">
-                            <a href="<?php echo($linkDetalle);?>"><img class="card-img-top" src="./public/img/img_productos/<?php echo($descImg);?>" alt="<?php echo($nombrePro)?>"></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="<?php echo($linkDetalle);?>"><?php echo($nombrePro)?></a>
-                                </h4>
-                    <?php
-                            if($value->proPromo){
-                                $precioCDesc = $precioPro - (($value->proDescuento * $precioPro) / 100);
-                    ?>
-                                <h5 style="text-decoration:line-through;"><?php echo('$'.number_format($precioPro, 2))?></h5>
-                                <h5><?php echo('$'.number_format($precioCDesc, 2))?></h5>
-                    <?php
-                            }else{
-                    ?>
-                                <h5><?php echo('$'.number_format($precioPro, 2))?></h5>
-                    <?php
-                            }
-                    ?>
-                                <p class="card-text"><?php echo($descPro)?></p>
+                        <div class="precio-individual">
+                            <?php
+                                $precio = round(intval($value->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                                $precio = ($value->proPromo) ? $precio - $precio * (($value->proDescuento / 100)) : $precio;
+                            ?>
+                            <h5 class="h4" id="preIndPrd"><?php echo("$symPrecio " .$precio)?></h5>
+                            <?php
+                                if($value->proPromo){
+                            ?>
+                            <p class="promo"> <?php echo($value->proDescuento ) ?>% OFF </p>
+                            <?php   
+                                }
+                            ?>
+                        </div>
+                        <div style="width: 100%; margin-top: 50px;">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Modelo</td>
+                                        <td>A3144</td>
+                                    </tr>
+                                    <tr>
+                                        <td>voltaje</td>
+                                        <td>5v</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+
+                        <img class="mt-2 center-block" style="width: initial;" src="./public/img/img_productos/<?php echo($descImg);?>" alt="<?php echo($nombrePro)?>">
+
+
+                        <div class="row mt-3">
+                            <div class="col-6 center-block">
+                                <div class="input-group" >
+                                    <a onclick="restar(<?php echo($posicion);?>)" class="btn btn-outline-secondary" type="button" id="bRestar">-</a>
+                                    <span class="input-group-text" id="sCant"><?php echo(0);?></span>
+                                    <a onclick="sumar(<?php echo($posicion);?>)" class="btn btn-outline-secondary" type="button" id="bSumar">+</a>
+                                </div>
+                            </div>
+                            <div class="col-6 center-block">
+                                <h6 class="h4" id="preTotPrd"><?php echo("$symPrecio 0.00"); ?></h6>
                             </div>
                         </div>
+                        
+                        <button class="btn btn-success center-block" style="width: 80%; margin-top: 15px;" type="button" id="comprar">Comprar ahora</button>
+
                     </div>
+
                     <?php
                         }
                     }
@@ -130,8 +163,10 @@
             </div>
         </div>
     </div>
-    </div>
-
+</div>
+    
+    
+<script src="./public/js/producto.js"></script>
 </main>
 
 

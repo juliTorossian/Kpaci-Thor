@@ -18,12 +18,12 @@
                     foreach ($a_idProductos as $key => $valor) {
                         foreach ($a_producto_all as $key => $valorP) {
                             if ($valorP['proId'] == $valor) {
-                                $producto = new Producto($valorP['proId'],$valorP['proNombre'],$valorP['proDesc'],$valorP['proValores'],$valorP['proPrecio'],$valorP['categoriaId'], $valorP['proNomImg']);
-                                $producto->setNuevo($valorP['nuevo']);
-                                $producto->setPromo($valorP['promocion']);
-                                $producto->setStock($valorP['stock']);
-                                $producto->setDescuento($valorP['descuento']);
-                                array_push($a_productos_favoritos, $producto);
+                                // $producto = new Producto($valorP['proId'],$valorP['proNombre'],$valorP['proDesc'],$valorP['proValores'],$valorP['proPrecio'],$valorP['categoriaId'], $valorP['proNomImg']);
+                                // $producto->setNuevo($valorP['nuevo']);
+                                // $producto->setPromo($valorP['promocion']);
+                                // $producto->setStock($valorP['stock']);
+                                // $producto->setDescuento($valorP['descuento']);
+                                //array_push($a_productos_favoritos, $producto);
                             }
                         }
                     }

@@ -36,7 +36,7 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $a_productos_carrito[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $a_productos_carrito[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $a_productos_carrito;
         }
