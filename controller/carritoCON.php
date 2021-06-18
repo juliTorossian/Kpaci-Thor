@@ -13,7 +13,7 @@
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
                 $monedas    = monedaDAO::cargarMonedas();
-                $productos  = carritoDAO::cargarProductosCarritoPorUsuario($_SESSION['username']);
+                // $productos  = carritoDAO::cargarProductosCarritoPorUsuario($_SESSION['username']);
                 require_once('./view/carrito.php');
             }
         }

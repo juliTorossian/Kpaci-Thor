@@ -91,7 +91,8 @@
                             $posicion += 1;
                             $imprime = false;
                             $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
-
+                            
+                            $idPro       = $value->productoId;
                             $nombrePro   = $value->proNombre;
                             $precioPro   = round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
                             $descPro     = $value->proDescripcion;
@@ -102,7 +103,7 @@
                     
                     <div class="p-1 col-4<?php echo(($posicion > 2) ? ' mt-4' : ''); ?>"> 
                     
-                        <h5 style="text-overflow: ellipsis;"><?php echo($nombrePro)?></h5>
+                        <h5 style="text-overflow: ellipsis;" id="nomPro"><?php echo($nombrePro)?></h5>
 
                         <div class="precio-individual">
                             <?php
@@ -134,7 +135,7 @@
                         </div>
                         
 
-                        <img class="mt-2 center-block" style="width: initial;" src="./public/img/img_productos/<?php echo($descImg);?>" alt="<?php echo($nombrePro)?>">
+                        <img id="imgPro" class="mt-2 center-block" style="width: initial;" src="./public/img/img_productos/<?php echo($descImg);?>" alt="<?php echo($nombrePro)?>">
 
 
                         <div class="row mt-3">
@@ -150,7 +151,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-success center-block" style="width: 80%; margin-top: 15px;" type="button" id="comprar">Comprar ahora</button>
+                        <button class="btn btn-success center-block" style="width: 80%; margin-top: 15px;" type="button" id="comprar" onclick="agregarProductoAlCarrito(<?php echo($posicion.','.$idPro.',\''.$_SESSION['username'].'\'');?>)">Comprar ahora</button>
 
                     </div>
 
