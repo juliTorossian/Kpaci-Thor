@@ -91,6 +91,7 @@
                             $posicion += 1;
                             $imprime = false;
                             $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
+                            $usuario = (isset($_SESSION['username'])) ? $_SESSION['username'] : null;
                             
                             $idPro       = $value->productoId;
                             $nombrePro   = $value->proNombre;
@@ -101,7 +102,7 @@
 
                     ?>
                     
-                    <div class="p-1 col-4<?php echo(($posicion > 2) ? ' mt-4' : ''); ?>"> 
+                    <div class="p-1 col-4<?php echo(($posicion > 2) ? ' mt-4' : ''); ?>" id="<?php echo($idPro);?>"> 
                     
                         <h5 style="text-overflow: ellipsis;" id="nomPro"><?php echo($nombrePro)?></h5>
 
@@ -141,9 +142,9 @@
                         <div class="row mt-3">
                             <div class="col-6 center-block">
                                 <div class="input-group" >
-                                    <a onclick="restar(<?php echo($posicion);?>)" class="btn btn-outline-secondary" type="button" id="bRestar">-</a>
+                                    <a onclick="restar(<?php echo($posicion.','.$idPro.',\''.$usuario.'\'');?>)" class="btn btn-outline-secondary" type="button" id="bRestar">-</a>
                                     <span class="input-group-text" id="sCant"><?php echo(0);?></span>
-                                    <a onclick="sumar(<?php echo($posicion);?>)" class="btn btn-outline-secondary" type="button" id="bSumar">+</a>
+                                    <a onclick="sumar(<?php echo($posicion.','.$idPro.',\''.$usuario.'\'');?>)" class="btn btn-outline-secondary" type="button" id="bSumar">+</a>
                                 </div>
                             </div>
                             <div class="col-6 center-block">
@@ -151,7 +152,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-success center-block" style="width: 80%; margin-top: 15px;" type="button" id="comprar" onclick="agregarProductoAlCarrito(<?php echo($posicion.','.$idPro.',\''.$_SESSION['username'].'\'');?>)">Comprar ahora</button>
+                        <button class="btn btn-success center-block" style="width: 80%; margin-top: 15px;" type="button" id="comprar" onclick="agregarProductoAlCarrito(<?php echo($posicion.','.$idPro.',\''.$usuario.'\'');?>)">Comprar ahora</button>
 
                     </div>
 
@@ -168,6 +169,7 @@
     
     
 <script src="./public/js/producto.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </main>
 
 

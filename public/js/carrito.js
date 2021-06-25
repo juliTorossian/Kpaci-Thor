@@ -1,195 +1,196 @@
 
-const sCant    = document.querySelectorAll('#sCant')
-const preTot   = document.querySelectorAll('#preTotPrd')
-const preInd   = document.querySelectorAll('#preIndPrd')
 
-var cantidad = parseInt(sCant.innerHTML,2);
-//console.log(cantidad);
+class Carrito{
 
-//bSumar.addEventListener('click', sumar);
-//bRestar.addEventListener('click', restar);
 
-function sumar(pos){
-    var cantidad = parseInt(sCant[pos].innerHTML);
-    cantidad += 1;
-    sCant[pos].innerHTML = cantidad.toString();
-    //console.log(cantidad);
-    //console.log('sumar');
-    actualizarPrecio(cantidad, pos);
-}
 
-function restar(pos){
-    var cantidad = parseInt(sCant[pos].innerHTML);
-    if (cantidad > 1){
-        cantidad -= 1;
+
+    // CANTIDADES DEL CARRITO
+
+    sumarCantidad(pos, idpro, usuario){
+        var cantidad = parseInt(sCant[pos].innerHTML);
+        cantidad += 1;
         sCant[pos].innerHTML = cantidad.toString();
         //console.log(cantidad);
-        //console.log('restar');
+        //console.log('sumar');
         actualizarPrecio(cantidad, pos);
-    }
-}
-
-function actualizarPrecio(cantidad, pos){
-
-    var aux = preInd[pos].innerHTML.split(' ');
-    var precioInd = parseFloat(aux[1]);
-    precioAct = (precioInd * cantidad).toFixed(2);
-
-    preTot[pos].textContent = aux[0] +' ' +precioAct.toString();
-
-    actualizaTotal();
-}
-
-
-function actualizaTotal(){
-    const preTot   = document.querySelectorAll('#preTotPrd')
-    const preTotal = document.querySelector('#preTotal')
-
-    var precioTotal = 0;
-    var count = 0;
-    var aux;
-    while(count < preTot.length){
-        aux = preTot[count].innerHTML.split(' ');
-        //console.log(aux);
-        precioTotal += parseFloat(aux[1]);
-        count++;
-    }
-
-    //console.log(aux[0] +' ' +precioTotal);
-    preTotal.textContent = aux[0] +' ' +precioTotal.toFixed(2);
-}
-
-//class carrito {
-
-//Mostrar los productos guardados en el LS
-function leerLocalStorage(usuario){
-    console.log(usuario);
-
-    let productosLS;
-    const div = document.querySelector('#div-cards')
-    const moneda = document.querySelector('#moneda').textContent;
-    const sym_div = moneda.split(' ') 
-
-    productosLS = this.obtenerProductosLocalStorage();
-    if (productosLS.length === 0){
-        div.innerHTML = 'Su carrito esta vacio';
-    }else{
-        var posicion = -1;
-        productosLS.forEach(function (producto){
-            if(producto.usuario === usuario){
-                posicion += 1;
-                var aux = producto.precio.split(' ');
-                var precioInd = parseFloat(aux[1]);
-                precioAct = (precioInd * producto.cantidad).toFixed(2);
-
-                precioInd = precioInd / parseInt(sym_div[1]);
-                precioAct = precioAct / parseInt(sym_div[1]);
-
-                precioInd = sym_div[0] +' ' +precioInd.toFixed(2);
-                precioAct = sym_div[0] +' ' +precioAct.toFixed(2);
-                
-                div.innerHTML += '<div class="card mb-2"><div class="card-body"><div class="row"><div class="col-3"><img src="'+producto.imagen +'" alt="imagen producto"></div><div class="col-3 my-auto"><h5 class="card-title">'+producto.nombre+'</h5></div><div class="col-2 my-auto"><div class="input-group mb-3"><a onclick="restar(' +posicion +')" class="btn btn-outline-secondary" type="button" id="bRestar">-</a><span class="input-group-text" id="sCant">'+producto.cantidad+'</span><a onclick="sumar('+posicion+')" class="btn btn-outline-secondary" type="button" id="bSumar">+</a></div></div><div class="col-2 my-auto text-center"><h5 style="border-right: 1px solid gray;" id="preIndPrd">'+precioInd+'</h5></div><div class="col-2 my-auto text-center"><h5 id="preTotPrd">' +precioAct +'</h5></div></div></div></div>';
-
-                actualizaTotal();
-            }else{
-                div.innerHTML = 'Su carrito esta vacio';
-            }
-        });
+        actualizarProductoCarrito(pos, idpro, usuario);
     }
     
-}   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//----/-/-/--/-
-
-    //Añadir producto al carrito
-    function agregarProductoAlCarrito(pos){
-        this.leerDatosProducto(pos);
+    restarCantidad(pos, idpro, usuario){
+        var cantidad = parseInt(sCant[pos].innerHTML);
+        if (cantidad > 0){
+            cantidad -= 1;
+            sCant[pos].innerHTML = cantidad.toString();
+            //console.log(cantidad);
+            //console.log('restar');
+            actualizarPrecio(cantidad, pos);
+            if (cantidad > 0){
+                actualizarProductoCarrito(pos, idpro,usuario);
+            }else{
+                //preguntar si desea eliminar el producto
+                if(existeProductoLS(idpro)){
+                    Swal.fire({
+                        title: 'Esta seguro?',
+                        text: "Seguro desea eliminar este producto del carrito",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, eliminarlo!'
+                    }).then((result) => {
+                        //si desea, eliminarlo
+                        if (result.isConfirmed) {
+                            eliminarProductoLocalStorage(idpro);
+                            Swal.fire(
+                            'Eliminado!',
+                            'Producto eliminado del carrito',
+                            'success'
+                            )
+                        }
+                    })
+                }
+            }
+        }
     }
 
-    //Leer datos del producto
-    function leerDatosProducto(pos){
-        const infoProducto = {
-            imagen:   document.querySelectorAll('#imgPro')[pos].src,
-            nombre:   document.querySelectorAll('#nomPro')[pos].textContent,
-            precio:   document.querySelectorAll('#preIndPrd')[pos].textContent,
-            id:       document.querySelectorAll('#nompro')[pos].getAttribute('data-id'),
-            cantidad: document.querySelectorAll('#sCant')[pos].textContent
-        }
-        let productosLS;
-        productosLS = this.obtenerProductosLocalStorage();
-        productosLS.forEach(function (productoLS){
-            if(productoLS.id === infoProducto.id){
-                productosLS = productoLS.id;
-            }
-        });
+    // PRECIOS DE LOS PRODUCTOS
 
-        if(productosLS === infoProducto.id){
-            // Swal.fire({
-            //     type: 'info',
-            //     title: 'Oops...',
-            //     text: 'El producto ya está agregado',
-            //     showConfirmButton: false,
-            //     timer: 1000
-            // })
+    // PRECIO TOTAL DEL PRODUCTO * CANTIDAD
+    actualizarPrecio(cantidad, pos){
+
+        var aux = preInd[pos].innerHTML.split(' ');
+        //console.log(aux[1])
+        var precioInd = parseFloat(aux[1]);
+        //console.log(precioInd.toString())
+        precioAct = (precioInd * cantidad).toFixed(2);
+    
+        preTot[pos].textContent = aux[0] +' ' +precioAct.toString();
+    
+        //actualizaTotal();
+    }
+    
+    // PRECIO TOTAL DE TODOS LOS PRODUCTOS
+    actualizaTotal(){
+        //const preTotSec  = document.querySelectorAll('#preTotPrd')
+        
+        var precioTotal = 0;
+        var count = 0;
+        var aux;
+        while(count < preTot.length){
+            aux = preTot[count].innerHTML.split(' ');  
+            //console.log(aux);
+            precioTotal += parseFloat(aux[1]);
+            count++;
+        }
+    
+        //console.log(aux[0] +' ' +precioTotal);
+        preTotal.textContent = aux[0] +' ' +precioTotal;
+    }
+
+    agregarProductoAlCarrito(pos, idPro, usuario){
+        this.leerDatosProducto(pos, idPro, usuario, 'A');// A - agregado
+    }
+    
+    actualizarProductoCarrito(pos, idProducto, usuario){
+        if(existeProductoLS(idProducto)){
+            console.log('actualizando producto')
+            eliminarProductoLocalStorage(idProducto);
+            leerDatosProducto(pos, idProducto, usuario, 'M'); //M - modificacion
+        }
+    }
+    
+    //Leer datos del producto
+    leerDatosProducto(pos, idPro, usuario, origen){
+
+        var imgPro = document.querySelectorAll('#imgPro');
+        var nomPro = document.querySelectorAll('#nomPro');
+        var prePro = document.querySelectorAll('#preIndPrd');
+        var canPro = document.querySelectorAll('#sCant');
+
+        const infoProducto = {
+            usuario:  usuario,
+            imagen:   imgPro[pos].src,
+            nombre:   nomPro[pos].textContent,
+            precio:   prePro[pos].textContent,
+            id:       idPro,
+            cantidad: canPro[pos].textContent
+        }
+        
+        console.log(existeProductoLS(infoProducto.id));
+        if(existeProductoLS(infoProducto.id)){
+            Swal.fire({
+                //type: 'info',
+                title: 'Oops...',
+                text: 'El producto ya está agregado',
+                showConfirmButton: false,
+                timer: 2000
+            })
             console.log('Ya existe el producto');
         }
         else {
-            //this.insertarCarrito(infoProducto);
-            //this.guardarProductosLocalStorage(infoProducto);
-            console.log('Producto Insertado en el carrito');
+            if(parseInt(infoProducto.cantidad) < 1){
+                console.log('la cantidad no puede ser 0');
+            }else{
+                //this.insertarCarrito(infoProducto);
+                this.guardarProductosLocalStorage(infoProducto, origen);
+                //console.log('Producto Insertado en el carrito');
+            }
         }
-
     }
 
+    existeProductoLS(idProducto){
+        var aux = false;
+        let productosLS;
+        productosLS = obtenerProductosLocalStorage();
+        productosLS.forEach(function (productoLS){
+            aux = (productoLS.id === idProducto);
+        });
+        return aux;
+    }
+    
     //Eliminar producto por ID del LS
-    function eliminarProductoLocalStorage(productoID){
+    eliminarProductoLocalStorage(productoID){
         let productosLS;
         //Obtenemos el arreglo de productos
         productosLS = this.obtenerProductosLocalStorage();
         //Comparar el id del producto borrado con LS
         productosLS.forEach(function(productoLS, index){
             if(productoLS.id === productoID){
+                console.log('eliminando: ' +productoLS)
                 productosLS.splice(index, 1);
             }
         });
-
+    
         //Añadimos el arreglo actual al LS
         localStorage.setItem('productos', JSON.stringify(productosLS));
     }
-
+    
     //Almacenar en el LS
-    function guardarProductosLocalStorage(producto){
+    guardarProductosLocalStorage(producto,origen){
         let productos;
         //Toma valor de un arreglo con datos del LS
         productos = this.obtenerProductosLocalStorage();
+        console.log(productos);
         //Agregar el producto al carrito
         productos.push(producto);
         //Agregamos al LS
         localStorage.setItem('productos', JSON.stringify(productos));
+        if(origen === 'A'){ // A - agregado
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Agregado al carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     }
-
+    
     //Comprobar que hay elementos en el LS
-    function obtenerProductosLocalStorage(){
+    obtenerProductosLocalStorage(){
         let productoLS;
-
+    
         //Comprobar si hay algo en LS
         if(localStorage.getItem('productos') === null){
             productoLS = [];
@@ -199,14 +200,33 @@ function leerLocalStorage(usuario){
         }
         return productoLS;
     }
+    
+    //Eliminar todos los datos del LS
+    vaciarLocalStorage(){
+        localStorage.clear();
+    }
 
-//}
+}
 
 
-function trunc (x, posiciones = 0) {
-    var s = x.toString()
-    var l = s.length
-    var decimalLength = s.indexOf('.') + 1
-    var numStr = s.substr(0, decimalLength + posiciones)
-    return Number(numStr)
-  }
+
+const sCant    = document.querySelectorAll('#sCant')
+const preTot   = document.querySelectorAll('#preTotPrd')
+const preInd   = document.querySelectorAll('#preIndPrd')
+//const preTotal = document.querySelector('#preTotal')
+
+var cantidad = parseInt(sCant.innerHTML,2);
+//console.log(cantidad);
+
+//bSumar.addEventListener('click', sumar);
+//bRestar.addEventListener('click', restar);
+
+
+
+
+
+
+
+
+
+
