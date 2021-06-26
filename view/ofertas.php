@@ -8,71 +8,8 @@
     <div class="container bg-white py-4">
         <div class="row">
             <h3 style="text-align: center; margin-bottom: 30px;">Ofertas</h3>
-            <div class="col-3">
-                <form action="" method="post">
-                    <h1 class="mb-4 text-center" id="productos">Categorias</h1>
-                    <?php //ListaDeCategorias($a_categorias);
-
-                    foreach ($categorias as $key => $value) {
-                    $id        = $value->cateId;
-                    $idPadre   = $value->catePadre;
-                    $nombreCat = $value->cateNombre;
-                    $tieneSub  = $value->tieneSub;
-
-                        if($idPadre == 0){
-                            if ($tieneSub) {
-                                //imprime check comun
-                    ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="<?php echo($id);?>" name="chk<?php echo($id);?>">
-                        <label class="form-check-label" for="flexCheckDefault">
-                        <?php echo($nombreCat);?>
-                        </label>
-                    </div>
-                    <?php
-                            }else{
-                                //imprime check comun
-                                //recorre e imprime check de sub
-                    ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="<?php echo($id);?>" name="chk<?php echo($id);?>" id="flexCheckIndeterminate">
-                        <label class="form-check-label" for="flexCheckIndeterminate">
-                        <?php echo($nombreCat);?>
-                        </label>
-                    </div>
-                    <?php
-                                foreach ($categorias as $key => $valor) {
-                                    $subId        = $valor->cateId;
-                                    $idPadre       = $valor->catePadre;
-                                    $nombreSubCat = $valor->cateNombre;
-                                    $tieneSub     = $valor->tieneSub;
-                                    if ($id == $idPadre) {
-                    ?>
-                        <div class="form-check" style="margin-left: 24px;">
-                            <input class="form-check-input" type="checkbox" value="<?php echo($subId);?>" name="chk<?php echo($id);?>" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                            <?php echo($nombreSubCat);?>
-                            </label>
-                        </div>
-                    <?php
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    ?>
-
-                    <button class="btn btn-outline-secondary" type="submit" id="">Aplicar</button>
-                    <?php
-                        if(isset($_POST['submit'])){
-                            //echo();
-                        }
-                    ?>
-                </form>
-            </div>
-
-
-            <div class="col-lg-9">
+            <div class="col-1"></div>
+            <div class="col-lg-10">
                 <div class="row">
                     <?php
                     $imprime = false;
@@ -125,6 +62,7 @@
                     ?>
                 </div>
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
     </div>

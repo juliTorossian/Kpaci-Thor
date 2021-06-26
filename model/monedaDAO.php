@@ -1,5 +1,7 @@
 <?php
 
+    include('./conn.php');
+    
     class monedaDAO{
 
         public static $FILE_MON    = './json/moneda.json';
