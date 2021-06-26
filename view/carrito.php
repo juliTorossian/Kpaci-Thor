@@ -10,10 +10,10 @@
 
 ?>
 
-    <body onload="leerLocalStorage('<?php echo($_SESSION['username']);?>')">
+    <body onload="mostrarProductosEnCarrito('<?php echo($_SESSION['username']);?>')">
         <div class="container bg-white py-4">
             <div class="row mx-auto my-auto">
-                <h3 style="text-align: center; margin-bottom: 30px;">Carrito</h3>
+                <h3 class="titulo" style="text-align: center; margin-bottom: 30px;">Carrito</h3>
                 <?php 
                     $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
                     $divMoneda = $monedas[intval($_SESSION['moneda'])-1]->monDivisa;
@@ -26,7 +26,7 @@
                         <div class="col-4 my-auto text-center"><h6>Precio</h6></div>
                     </div>
                 </div>
-                <div class="px-5" id="div-cards">
+                <div class="px-5 productos" id="div-cards">
                     <?php
                         if (!empty($productos)){
                             $posicion = -1;
@@ -85,6 +85,8 @@
     </body>
     <script></script>
     <script src="./public/js/carrito.js"></script>
+    <script src="./public/js/pedido.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </main>
 

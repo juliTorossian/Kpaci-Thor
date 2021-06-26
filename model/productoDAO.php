@@ -224,7 +224,7 @@
             $this->proDescripcion = $desc;
             //$this->proValores     = $valores;
             $this->proPrecio      = $precio;
-            $this->categoriaId    = $categoria;
+            $this->categoria    = $categoria;
             $this->proNuevo = ($esNuevo == 'S');
             $this->proPromo = ($estaPromo == 'S');
             $this->proDescuento = $porcDescuento;

@@ -21,6 +21,7 @@
                         $cant = 0;
                         $cantTotal = sizeof($a_productos_nuevos);
                         foreach ($a_productos_nuevos as $key => $value) {
+                            $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
                             $cant++;
                             if ($cant == 1) {
                 echo('<div class="carousel-item active">
@@ -29,18 +30,35 @@
                             }
                     ?>
                             <div class="card" style="max-width: 33% !important;">
-                                <img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="...">
+                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>">
+                                <img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
-                                <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
+                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
-                                <p class="card-text mr-2" style="text-align: right;">$<?php echo(round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2));?></p>
+
+                                <div class="precio-individual">
+                                    <?php
+                                        $precio = round(intval($value->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                                        $precio = ($value->proPromo) ? $precio - $precio * (($value->proDescuento / 100)) : $precio;
+                                    ?>
+                                    <h5 class="h4" id="preIndPrd"><?php echo("$symPrecio " .$precio)?></h5>
+                                    <?php
+                                        if($value->proPromo){
+                                    ?>
+                                    <p class="promo"> <?php echo($value->proDescuento ) ?>% OFF </p>
+                                    <?php   
+                                        }
+                                    ?>
                                 </div>
-                                <div class="card-footer">
+
+                                <!-- <p class="card-text mr-2" style="text-align: right;">$<?php //echo(round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2));?></p> -->
+                                </div>
+                                <!-- <div class="card-footer">
                                     <div class="btn-group text-center" role="group" aria-label="">
                                         <button type="button" class="btn btn-outline-primary">Favoritos</button>
                                         <button type="button" class="btn btn-outline-primary">Carrito</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                     <?php
                             if ($cant == $dividirGrupo && $cant < $cantTotal) {
@@ -71,6 +89,7 @@
                         $cant = 0;
                         $cantTotal = sizeof($a_productos_promo);
                         foreach ($a_productos_promo as $key => $value) {
+                            $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
                             $cant++;
                             if ($cant == 1) {
                 echo('<div class="carousel-item active">
@@ -79,18 +98,35 @@
                             }
                     ?>
                             <div class="card" style="max-width: 33% !important;">
-                                <img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="...">
+                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>"><img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
-                                <a href="./index.php?controller=productoCON&action=verProducto&productoId=<?php echo($value->productoId); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
+                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
-                                <p class="card-text mr-2" style="text-align: right;">$<?php echo(round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2));?></p>
+
+                                <div class="precio-individual">
+                                    <?php
+                                        $precio = round(intval($value->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
+                                        $precio = ($value->proPromo) ? $precio - $precio * (($value->proDescuento / 100)) : $precio;
+                                    ?>
+                                    <h5 class="h4" id="preIndPrd"><?php echo("$symPrecio " .$precio)?></h5>
+                                    <?php
+                                        if($value->proPromo){
+                                    ?>
+                                    <p class="promo"> <?php echo($value->proDescuento ) ?>% OFF </p>
+                                    <?php   
+                                        }
+                                    ?>
                                 </div>
-                                <div class="card-footer">
+
+
+                                <!-- <p class="card-text mr-2" style="text-align: right;">$<?php //echo(round($value->proPrecio / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2));?></p> -->
+                                </div>
+                                <!-- <div class="card-footer">
                                     <div class="btn-group text-center" role="group" aria-label="">
                                         <button type="button" class="btn btn-outline-primary">Favoritos</button>
                                         <button type="button" class="btn btn-outline-primary">Carrito</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                     <?php
                             if ($cant == $dividirGrupo && $cant < $cantTotal) {
