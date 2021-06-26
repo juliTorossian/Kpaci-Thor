@@ -169,4 +169,4 @@
         <input type="hidden" id="myReport" value=""/>
         </form>
 
-        <script src="./public/js/buscador.js"></script>
+        <!-- <script src="./public/js/buscador.js"></script> -->

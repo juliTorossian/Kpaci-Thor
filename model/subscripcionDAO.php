@@ -1,30 +1,37 @@
 <?php
 
+    include('./conn.php');
+
     class subscripcionDAO{
 
         public static $FILE_SUB = './json/suscripciones.json';
 
 
         public static function addSuscriptor($mailSuscriptor){
-            $a_suscripciones = json_decode(file_get_contents(subscripcionDAO::$FILE_SUB), true);
+            
+            global $mysqli;
 
-            $suscriptor = array(
-                'mailSuscriptor'=>$mailSuscriptor
-            );
-            array_push($a_suscripciones, $suscriptor);
-            $j_suscripciones = json_encode($a_suscripciones);
-            file_put_contents(subscripcionDAO::$FILE_SUB, $j_suscripciones);
+            $stmt = $mysqli->prepare("INSERT INTO suscripciones(susMail) VALUES(?)");
+            $stmt->bind_param("s", $mailSuscriptor);
+            $stmt->execute();
+
         }
 
         public static function existeSub($mailSuscriptor){
-            $a_suscripciones = json_decode(file_get_contents(subscripcionDAO::$FILE_SUB), true);
+            global $mysqli;
+
+            $stmt = $mysqli->prepare("SELECT * FROM suscripciones WHERE susMail = ?");
+            $stmt->bind_param("s", $mailSuscriptor);
+            $stmt->execute();
+            $resultado   = $stmt->get_result();
             
             $return = false;
-            foreach($a_suscripciones as $mail){
-                if ($mail["mailSuscriptor"] == $mailSuscriptor){
+            while($mail = $resultado->fetch_assoc()){
+                if ($mail != ''){
                     $return = true;
                     break;
                 }
+
             }
             return $return;
         }

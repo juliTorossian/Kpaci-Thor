@@ -200,24 +200,33 @@
         public static function verProductosFiltradosBusquda($categoriaId, $busqueda){
 
             global $mysqli;
-    
-            $stmt = $mysqli->prepare("SELECT categoriaTieneSub FROM categoria WHERE categoriaId = ?");
-            $stmt->bind_param("s", $categoriaId);
-            $stmt->execute();
-            $tieneSub = $stmt->get_result()->fetch_assoc()['categoriaTieneSub'];
+            
+            $tieneSub = 'N';
+
+            if($categoriaId != 999){
+                $stmt = $mysqli->prepare("SELECT categoriaTieneSub FROM categoria WHERE categoriaId = ?");
+                $stmt->bind_param("s", $categoriaId);
+                $stmt->execute();
+                $tieneSub = $stmt->get_result()->fetch_assoc()['categoriaTieneSub'];
+            }
             $paramLIKE = "%$busqueda%";
             
             $query = '';
             if($categoriaId == 999){
                 $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE prdNombre LIKE ?";
-            }
-            if($tieneSub == 'N'){
-                $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaId = ? AND prdNombre LIKE ?";
             }else{
-                $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaPadre = ? AND prdNombre LIKE ?";
+                if($tieneSub == 'N'){
+                    $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaId = ? AND prdNombre LIKE ?";
+                }else{
+                    $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaPadre = ? AND prdNombre LIKE ?";
+                }
             }
             $stmt = $mysqli->prepare($query);
-            $stmt->bind_param("ss", $categoriaId, $paramLIKE);
+            if($categoriaId == 999){
+                $stmt->bind_param("s", $paramLIKE);
+            }else{
+                $stmt->bind_param("ss", $categoriaId, $paramLIKE);
+            }
             $stmt->execute();
     
             $resultado   = $stmt->get_result();
