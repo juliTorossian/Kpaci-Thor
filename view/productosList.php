@@ -91,6 +91,10 @@
                             <button class="btn btn-success center-block comprar" style="width: 80%; margin-top: 15px;" type="button" id="" >Comprar ahora</button>
 
                         </div>
+                        <?php
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="col-1"></div>

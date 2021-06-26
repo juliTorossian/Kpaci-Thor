@@ -295,7 +295,7 @@ class Carrito{
 
     actualizarCantidadesDeLosProductos(){
         const cantidades = document.querySelectorAll('#sCant');
-        console.log(cantidades)
+        //console.log(cantidades)
 
         const productosLS = this.obtenerProductosLocalStorage();
 

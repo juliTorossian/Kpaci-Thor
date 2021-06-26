@@ -7,8 +7,8 @@
     <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
         <i class="bi bi-exclamation-triangle-fill"></i>
         <div style="margin-left: 10px;">
-            <?php   
-                echo($_SESSION['error']); 
+            <?php
+                echo($_SESSION['error']);
                 unset($_SESSION['error']);
             ?>
         </div>        
@@ -22,7 +22,7 @@
         <i class="bi bi-check-circle-fill"></i>
         <div style="margin-left: 10px;">
             <?php   
-                echo($_SESSION['msg']); 
+                echo($_SESSION['msg']);
                 unset($_SESSION['msg']);
             ?>
         </div>        
@@ -104,8 +104,6 @@
         </div>
         
     </footer>
-
-
 
 
     <script src="./public/js/buscador.js"></script>
