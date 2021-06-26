@@ -196,9 +196,60 @@
             }
             return $a_productos_favoritos;
         }
+
+        public static function verProductosFiltradosBusquda($categoriaId, $busqueda){
+
+            global $mysqli;
+            
+            $tieneSub = 'N';
+
+            if($categoriaId != 999){
+                $stmt = $mysqli->prepare("SELECT categoriaTieneSub FROM categoria WHERE categoriaId = ?");
+                $stmt->bind_param("s", $categoriaId);
+                $stmt->execute();
+                $tieneSub = $stmt->get_result()->fetch_assoc()['categoriaTieneSub'];
+            }
+            $paramLIKE = "%$busqueda%";
+            
+            $query = '';
+            if($categoriaId == 999){
+                $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE prdNombre LIKE ?";
+            }else{
+                if($tieneSub == 'N'){
+                    $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaId = ? AND prdNombre LIKE ?";
+                }else{
+                    $query = "SELECT * FROM prd LEFT JOIN categoria ON prd.categoriaId = categoria.categoriaId WHERE categoria.categoriaPadre = ? AND prdNombre LIKE ?";
+                }
+            }
+            $stmt = $mysqli->prepare($query);
+            if($categoriaId == 999){
+                $stmt->bind_param("s", $paramLIKE);
+            }else{
+                $stmt->bind_param("ss", $categoriaId, $paramLIKE);
+            }
+            $stmt->execute();
+    
+            $resultado   = $stmt->get_result();
+            $productos = array();
+            
+            while($producto = $resultado->fetch_assoc()){
+                $prdId        = $producto['prdId'];
+                $prdNombre    = $producto['prdNombre'];
+                $prdDesc      = $producto['prdDesc'];
+                $prdPrecio    = $producto['prdPrecio'];
+                $prdNomImg    = $producto['prdNomImg'];
+                $prdStock     = $producto['prdStock'];
+                $prdNuevo     = $producto['prdNuevo'];
+                $prdPromocion = $producto['prdPromocion'];
+                $prdDescuento = $producto['prdDescuento'];
+                $prdCategoria = $producto['categoriaId'];
+    
+                $productos[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
+            }
+            return $productos;
+        }
+        
     }
-
-
 
 
     class Producto{

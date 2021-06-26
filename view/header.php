@@ -73,8 +73,8 @@
                 <div class="col-3" style="color: white; font-size: 32px;"><a href="./index.php"><img src="./public/img/logo_blanco.png" alt="logo" class="img-logo"></a></div>
                 <div class="col-6">
                     <div class="input-group input-group-color">
-                        <select class="form-select input-group-der">
-                            <option value="1" selected>All</option>
+                        <select class="form-select input-group-der" id="categoria">
+                            <option value="999" selected>All</option>
                         <?php
                             foreach ($categorias as $key => $value) {
                                 if($value->catePadre == 0){
@@ -86,8 +86,8 @@
                             } 
                         ?>
                         </select>
-                        <input  type="text" class="form-control" placeholder="Buscar..." aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                        <input  type="text" class="form-control" placeholder="Buscar..." aria-label="Example text with button addon" aria-describedby="button-addon1" id="busqueda">
+                        <button onclick="buscar()" class="btn btn-outline-secondary input-group-izq input-group-color" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
                 <div class="col-3">
@@ -169,12 +169,4 @@
         <input type="hidden" id="myReport" value=""/>
         </form>
 
-        <script>
-            function takeValue(){
-            var sel = document.getElementById("monedaSeleccionada");
-            var selectedReport = sel.options[sel.selectedIndex].text;
-            //put the selected value in the hidden input value
-            document.getElementById("myReport").value=selectedReport;
-            }
-        </script>
-
+        <!-- <script src="./public/js/buscador.js"></script> -->

@@ -12,6 +12,17 @@ header{
     padding-left: 20%;
     padding-right: 20%;
 }
+
+.titulo{
+    background-color: #29a19c;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+
+    margin: 0;
+    padding: 50px 0 50px 0;
+}
+
 .item-header{
     font-size: 13px;
     padding: 5px;

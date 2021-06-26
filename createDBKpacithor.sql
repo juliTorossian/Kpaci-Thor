@@ -76,6 +76,11 @@ CREATE TABLE IF NOT EXISTS prd_com(
     FOREIGN KEY (compraHisId) REFERENCES compraHis(compraHisId)
 );
 
+DROP TABLE IF EXISTS suscripciones;
+CREATE TABLE IF NOT EXISTS suscripciones(
+    susId     INT             AUTO_INCREMENT PRIMARY KEY,
+    susMail   VARCHAR(60)     NOT NULL
+);
 
 
 

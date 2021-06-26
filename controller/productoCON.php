@@ -35,6 +35,13 @@
             require_once("view/favoritos.php");
         }
 
+        public function verProductosFiltradosBusquda(){
+            $categorias  = CategoriaDAO::cargarCategorias();
+            $productos   = ProductoDAO::verProductosFiltradosBusquda($_GET['cate'], $_GET['busqueda']);
+            $monedas     = monedaDAO::cargarMonedas();
+            require_once("view/productosList.php");
+        }
+
     }
 
 
