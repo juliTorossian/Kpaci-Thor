@@ -64,9 +64,9 @@
                                 <li>
                                     <p>INFO</p>
                                     <ul>
-                                        <li><a href="">Envios</a></li>
-                                        <li><a href="">Contacto</a></li>
-                                        <li><a href="">Terminos y Condiciones</a></li>
+                                        <li><a href="./index.php?controller=home&action=envios">Envios</a></li>
+                                        <li><a href="./index.php?controller=home&action=contacto">Contacto</a></li>
+                                        <li><a href="./index.php?controller=home&action=terycond">Terminos y Condiciones</a></li>
                                     </ul>
                                 </li>
                             </ul>

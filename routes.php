@@ -8,7 +8,7 @@
         $controller->{$action}();
     }
 
-    $controllers = array('home'           => ['inicio'],
+    $controllers = array('home'           => ['inicio', 'terycond', 'contacto', 'envios'],
                          'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
                          'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos'],
