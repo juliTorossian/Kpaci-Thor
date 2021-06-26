@@ -11,7 +11,7 @@
     $controllers = array('home'           => ['inicio', 'terycond', 'contacto', 'envios'],
                          'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
                          'oferta'         => ['ofertas'],
-                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos'],
+                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos', 'verProductosFiltradosBusquda'],
                          'footer'         => ['agregarSub'],
                          'carritoCON'     => ['miCarrito', 'aumentarCantidad'],
                          'favoritoCON'    => ['favoritos', 'favoritosOnly']
