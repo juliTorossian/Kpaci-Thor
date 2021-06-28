@@ -121,10 +121,10 @@ class Carrito{
         e = e.target.parentElement.parentElement.parentElement;
         //console.log(e);
         const idProducto = e.parentElement.querySelector('#nomPro').getAttribute('name');
-        console.log(idProducto)
-        console.log(this.existeProductoLS(idProducto))
+        // console.log(idProducto)
+        // console.log(this.existeProductoLS(idProducto))
         if(this.existeProductoLS(idProducto)){
-            console.log('actualizando producto')
+            // console.log('actualizando producto')
             this.eliminarProductoLocalStorage(idProducto);
             this.leerDatosProducto(e, 'M'); //M - modificacion
         }
@@ -149,7 +149,7 @@ class Carrito{
             cantidad: producto.querySelector('#sCant').textContent
         }
 
-        console.log(infoProducto);
+        // console.log(infoProducto);
         
         // console.log(this.existeProductoLS(infoProducto.id));
         if(this.existeProductoLS(infoProducto.id)){
@@ -164,7 +164,7 @@ class Carrito{
         }
         else {
             if(parseInt(infoProducto.cantidad) < 1){
-                console.log('la cantidad no puede ser 0');
+                // console.log('la cantidad no puede ser 0');
             }else{
                 //this.insertarCarrito(infoProducto);
                 this.guardarProductosLocalStorage(infoProducto, origen);
@@ -193,7 +193,7 @@ class Carrito{
         //Comparar el id del producto borrado con LS
         productosLS.forEach(function(productoLS, index){
             if(productoLS.id === productoID){
-                console.log('eliminando: ' +productoLS)
+                // console.log('eliminando: ' +productoLS)
                 productosLS.splice(index, 1);
             }
         });
@@ -207,7 +207,7 @@ class Carrito{
         var productos;
         //Toma valor de un arreglo con datos del LS
         productos = this.obtenerProductosLocalStorage();
-        console.log(productos);
+        // console.log(productos);
         //Agregar el producto al carrito
         productos.push(producto);
         //Agregamos al LS
@@ -243,7 +243,7 @@ class Carrito{
     }
 
     mostrarProductosEnCarrito(usuario){
-        console.log(usuario);
+        // console.log(usuario);
     
         var productosLS;
         const div = document.querySelector('#div-cards')
@@ -311,7 +311,55 @@ class Carrito{
         
     }
 
+    eliminarCarrito(usuario){
+        var productosLS;
+        //Obtenemos el arreglo de productos
+        productosLS = this.obtenerProductosLocalStorage();
+        //Comparar el id del producto borrado con LS
+        productosLS.forEach(function(productoLS, index){
+            if(productoLS.usuario === usuario){
+                console.log('eliminando: ' +productoLS)
+                productosLS.splice(index, 1);
+            }
+        });
+    
+        //Añadimos el arreglo actual al LS
+        localStorage.setItem('productos', JSON.stringify(productosLS));
+    }
+
+    realizarCompra(usuario){
+        var productosLS = this.obtenerProductosLocalStorage();
+        var compra = [];
+    
+        productosLS.forEach(function(producto){
+            if(producto.usuario === usuario){
+                compra.push(producto);
+                carrito.eliminarCarrito(usuario);
+            }
+        });
+
+        $.post('index.php?controller=carritoCON&action=realizarCompra', {"compra" : compra, "usuario": usuario}, function(data){
+            if(data === '1'){
+                console.log('ok');
+                location.reload();
+            }else{
+                console.log('no ok');
+            }
+        });
+    }
 }
+
+
+// var var1 = 10;
+
+// $('#realizarCompra').on('click', function(){
+//     $.post('index.php?controller=carritoCON&action=realizarCompra', {
+//         "var1": var1
+//     },function(data){
+//         console.log('realizando compra', data);
+//     });
+// })
+
 
 
 
