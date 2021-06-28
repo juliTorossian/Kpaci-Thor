@@ -80,13 +80,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                <button onclick="realizarCompra('<?php echo($_SESSION['username'])?>')" class="btn btn-outline-success" id='realizarCompra' type="button">Realizar Compra</button>
+            </div>
                 
         </div>
     </body>
-    <script></script>
     <script src="./public/js/carrito.js"></script>
     <script src="./public/js/pedido.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./public/js/jquery-3.6.0.js"></script>
 
 </main>
 

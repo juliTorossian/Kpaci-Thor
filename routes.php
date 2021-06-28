@@ -13,7 +13,7 @@
                          'oferta'         => ['ofertas'],
                          'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos', 'verProductosFiltradosBusquda'],
                          'footer'         => ['agregarSub'],
-                         'carritoCON'     => ['miCarrito', 'aumentarCantidad'],
+                         'carritoCON'     => ['miCarrito', 'realizarCompra'],
                          'favoritoCON'    => ['favoritos', 'favoritosOnly']
                         );
 

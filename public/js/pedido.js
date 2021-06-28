@@ -24,3 +24,7 @@ function mostrarProductosEnCarrito(usuario){
 function actualizarCantidades(){
     carrito.actualizarCantidadesDeLosProductos();
 }
+
+function realizarCompra(usuario){
+    carrito.realizarCompra(usuario);
+}

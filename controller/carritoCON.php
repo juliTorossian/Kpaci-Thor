@@ -17,6 +17,10 @@
                 require_once('./view/carrito.php');
             }
         }
+
+        function realizarCompra(){
+            echo(carritoDAO::realizarCompra($_POST['compra'], $_POST['usuario']));
+        }
     }
 
 

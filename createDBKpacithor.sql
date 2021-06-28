@@ -63,6 +63,7 @@ DROP TABLE IF EXISTS compraHis;
 CREATE TABLE IF NOT EXISTS compraHis(
     compraHisId   INT             AUTO_INCREMENT PRIMARY KEY,
     usrId         INT             NOT NULL,
+    fecha         DATETIME        NOT NULL,
     FOREIGN KEY (usrId) REFERENCES usuario(usrId)
 );
 
