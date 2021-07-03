@@ -2,9 +2,7 @@
 
     require_once('./model/productoDAO.php');
     require_once('./model/categoriaDAO.php');
-    require_once('./model/categoria.php');
     require_once('./model/monedaDAO.php');
-    require_once('./model/moneda.php');
     require_once('./model/favoritoDAO.php');
 
     class favoritoCON{
@@ -27,6 +25,14 @@
                 $productos  = favoritoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
                 require_once('./view/favoritosOnly.php');
             }
+        }
+
+        function eliminarProductoCarrito(){
+            favoritoDAO::eliminarProductoCarrito($_SESSION['username'], $_POST['productoId']);
+        }
+
+        function agregarProductoCarrito(){
+            favoritoDAO::agregarProductoCarrito($_SESSION['username'], $_POST['productoId']);
         }
     }
 

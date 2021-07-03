@@ -1,5 +1,7 @@
 <?php
 
+    global $mysqli;
+
     $HOST   = 'localhost';
     $USER   = 'root';
     $PASS   = '';
@@ -11,5 +13,5 @@
         die("Error " .$mysqli->connect_errno ." - " .$mysqli->connect_errno);
     }
 
-    //echo('Holas');
+    //echo('Holas'); tambien con import error
 ?>

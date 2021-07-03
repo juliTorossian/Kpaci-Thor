@@ -1,20 +1,10 @@
 <?php
 
     class carritoDAO{
-
-        public static $FILE_PRO = './json/producto.json';
-        public static $FILE_CAT = './json/categoria.json';
-        public static $FILE_FAV = './json/favorito.json';
-        public static $FILE_CAR = './json/carrito.json';
         
         public static function cargarProductosCarritoPorUsuario($usuario){
 
-            $HOST   = 'localhost';
-            $USER   = 'root';
-            $PASS   = '';
-            $DBNAME = 'kpacithor';
-
-            $mysqli = new mysqli($HOST, $USER, $PASS, $DBNAME);
+            global $mysqli;
 
             $stmt = $mysqli->prepare("SELECT usrId FROM usuario WHERE usrNombre = ?");
             $stmt->bind_param("s", $usuario);
@@ -41,9 +31,51 @@
                 $prdDescuento = $producto['prdDescuento'];
                 $prdCategoria = $producto['categoriaId'];
 
-                $a_productos_carrito[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg);
+                $a_productos_carrito[] = new Producto($prdId, $prdNombre, $prdDesc, $prdPrecio, $prdCategoria, $prdNomImg, $prdNuevo, $prdPromocion, $prdDescuento, $prdStock);
             }
             return $a_productos_carrito;
+        }
+
+        public static function realizarCompra($compra, $usuario){
+
+            global $mysqli;
+            date_default_timezone_set('America/Argentina/Buenos_Aires');
+            $date = date('Y-m-d H:i:s', time());
+
+            $stmt = $mysqli->prepare("SELECT usrId FROM usuario WHERE usrNombre = ?");
+            $stmt->bind_param("s", $usuario);
+            $stmt->execute();
+            $usrId = $stmt->get_result()->fetch_assoc()['usrId'];
+            
+            $stmt = $mysqli->prepare("INSERT INTO comprahis(usrId, fecha) VALUES(?, ?)");
+            $stmt->bind_param("ss", $usrId, $date);
+            $stmt->execute();
+
+            $stmt = $mysqli->prepare("SELECT LAST_INSERT_ID() AS 'compraHisId'");
+            $stmt->execute();
+            $compraHisId = $stmt->get_result()->fetch_assoc()['compraHisId'];
+
+            $ok = true;
+
+
+            foreach ($compra as $key => $value) {
+                
+                $id = intval($value['id']);
+                $cantidad = intval($value['cantidad']);
+                $aux = intval($compraHisId);
+
+                $stmt = $mysqli->prepare("INSERT INTO prd_com(prdId, compraHisId, prdCantCar) VALUES(?, ?, ?)");
+                $stmt->bind_param("iii", $id, $aux, $cantidad);
+                $ok = $stmt->execute();
+
+            }
+
+            if(!$ok){
+                echo('fallo');
+            }
+            
+            //$ok = false;
+            return $ok;
         }
 
     }

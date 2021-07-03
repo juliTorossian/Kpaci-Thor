@@ -18,34 +18,51 @@
                 </div>
                 <div class="col-5" style="text-align: center;">
                     <h2><?php echo($producto->proNombre);?></h2>
-                    <h4><?php echo("Desc: $producto->proDescripcion"); ?></h4>
 
-                    <div class="h5">
+                    <div class="mt-5">
+                        <h4>Descripcion</h4>
+                        <p>
+                            <?php echo($producto->proDescripcion); ?>
+                        </p>
+                    </div>
+                    
+
+                    <!-- <div class="h5">
                         <div style="text-align: left !important;">
                             <ul>
                                 <?php
-                                    $a_valores = explode(",", $producto->proValores);
-                                    foreach ($a_valores as $key => $value) {
+                                    //$a_valores = explode(",", $producto->proValores);
+                                    //foreach ($a_valores as $key => $value) {
                                 ?>
-                                    <li>¤ <?php echo($value); ?></li>
+                                    <li>¤ <?php //echo($value); ?></li>
                                 <?php
-                                    }
+                                    //}
                                 ?>
                             </ul>
                         </div>
-                    </div>
-                    <div style="text-align: right !important;">
+                    </div> -->
+                    <div style="text-align: right !important; display: flex;">
                         <?php
                             $precio = round(intval($producto->proPrecio) / $monedas[intval($_SESSION['moneda'])-1]->monDivisa, 2);
                             $precio = ($producto->proPromo) ? $precio - $precio * (($producto->proDescuento / 100)) : $precio;
                         ?>
                         <h5 class="h3">$<?php echo($precio);?></h5>
+                        <p style="background-color: green; border-radius: 4px; color: white;"> <?php echo($producto->proDescuento ) ?>% OFF </p>
+                    </div>
+
+                    <div class="botones_producto">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-warning" type="button" id="addCarrito">Agregar al carrito</button>
+                            <button class="btn btn-success" type="button" id="comprar">Comprar ahora</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
 
+    <script src="./public/producto.js"></script>
 </main>
 
 

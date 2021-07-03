@@ -13,15 +13,13 @@
             }else{
                 $categorias = CategoriaDAO::cargarCategorias();
                 $monedas    = monedaDAO::cargarMonedas();
-                $productos  = carritoDAO::cargarProductosCarritoPorUsuario($_SESSION['username']);
+                // $productos  = carritoDAO::cargarProductosCarritoPorUsuario($_SESSION['username']);
                 require_once('./view/carrito.php');
             }
         }
 
-        function aumentarCantidad(){
-
-            carritoDAO::sumarCantidadAUnProducto($_SESSION['username'], 6);
-            $this->miCarrito();
+        function realizarCompra(){
+            echo(carritoDAO::realizarCompra($_POST['compra'], $_POST['usuario']));
         }
     }
 

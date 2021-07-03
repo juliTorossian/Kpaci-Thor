@@ -23,6 +23,7 @@
         ?>
         <div class="form_main_register">
             <form action="./index.php?controller=UsuarioCON&action=registrar" method="POST">
+                <p>Mail: <input type="text" name="mail" class="form_camp" required></p>
                 <p>Usuario: <input type="text" name="username" class="form_camp" required></p>
                 <p>Contraseña: <input type="password" name="password" class="form_camp" required></p>
                 <input type="submit" name="submit" class="form_submit" value="Registrarse">

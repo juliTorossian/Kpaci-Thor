@@ -8,13 +8,14 @@
         $controller->{$action}();
     }
 
-    $controllers = array('home'           => ['inicio'],
-                         'UsuarioCON'     => ['login', 'registrar', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
+    $controllers = array('home'           => ['inicio', 'terycond', 'contacto', 'envios'],
+                         'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras', 'cambiarContrasenia', 'veficarContrasenia'],
                          'oferta'         => ['ofertas'],
-                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos'],
+                         'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos', 'verProductosFiltradosBusquda'],
                          'footer'         => ['agregarSub'],
-                         'carritoCON'     => ['miCarrito', 'aumentarCantidad'],
-                         'favoritoCON'    => ['favoritos', 'favoritosOnly']
+                         'carritoCON'     => ['miCarrito', 'realizarCompra'],
+                         'favoritoCON'    => ['favoritos', 'favoritosOnly', 'eliminarProductoCarrito', 'agregarProductoCarrito'],
+                         'compraCON'      => ['compraHis', 'compraHisOnly']
                         );
 
     if (array_key_exists($controller, $controllers)){

@@ -7,8 +7,8 @@
     <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
         <i class="bi bi-exclamation-triangle-fill"></i>
         <div style="margin-left: 10px;">
-            <?php   
-                echo($_SESSION['error']); 
+            <?php
+                echo($_SESSION['error']);
                 unset($_SESSION['error']);
             ?>
         </div>        
@@ -22,7 +22,7 @@
         <i class="bi bi-check-circle-fill"></i>
         <div style="margin-left: 10px;">
             <?php   
-                echo($_SESSION['msg']); 
+                echo($_SESSION['msg']);
                 unset($_SESSION['msg']);
             ?>
         </div>        
@@ -64,9 +64,9 @@
                                 <li>
                                     <p>INFO</p>
                                     <ul>
-                                        <li><a href="">Envios</a></li>
-                                        <li><a href="">Contacto</a></li>
-                                        <li><a href="">Terminos y Condiciones</a></li>
+                                        <li><a href="./index.php?controller=home&action=envios">Envios</a></li>
+                                        <li><a href="./index.php?controller=home&action=contacto">Contacto</a></li>
+                                        <li><a href="./index.php?controller=home&action=terycond">Terminos y Condiciones</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -78,7 +78,7 @@
                                     <ul>
                                         <li><a href="./index.php?controller=favoritoCON&action=favoritos">Favoritos</a></li>
                                         <li><a href="./index.php?controller=UsuarioCON&action=miCuenta">Mi Cuenta</a></li>
-                                        <li><a href="./index.php?controller=UsuarioCON&action=misCompras">Mis Compras</a></li>
+                                        <li><a href="./index.php?controller=compraCON&action=compraHis">Mis Compras</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -106,8 +106,7 @@
     </footer>
 
 
-
-
+    <script src="./public/js/buscador.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
