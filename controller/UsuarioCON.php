@@ -7,10 +7,6 @@
     
     class UsuarioCON {
 
-        function loginView(){
-            require_once('./view/login.php');
-        }
-
         function login(){
             if(isset($_POST['username']) && isset($_POST['password'])){
                 if(!empty($_POST['username']) && !empty($_POST['password'])){
@@ -30,10 +26,6 @@
                 $_SESSION['error'] = 'Campos Incorrectos';
                 require_once('./view/login.php');
             }
-        }
-
-        function registrarView(){
-            require_once("./view/register.php");
         }
 
         function registrar(){
