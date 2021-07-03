@@ -14,6 +14,7 @@
         function login(){
             if(isset($_POST['username']) && isset($_POST['password'])){
                 if(!empty($_POST['username']) && !empty($_POST['password'])){
+                    echo(UsuarioDAO::existeUsuario($_POST['username'], $_POST['password']));
                     if(UsuarioDAO::existeUsuario($_POST['username'], $_POST['password'])){
                         $_SESSION['username'] = $_POST['username'];
                         header('Location: ./index.php');
@@ -38,8 +39,8 @@
         function registrar(){
             if(isset($_POST['username']) && isset($_POST['password'])){
                 if(!empty($_POST['username']) && !empty($_POST['password'])){
-                    if(!UsuarioDAO::usuarioOcupado($_POST['username'])){
-                        UsuarioDAO::crearUsuario($_POST['username'], $_POST['password']);
+                    if(!UsuarioDAO::nombreDeUsuarioOcupado($_POST['username'])){
+                        UsuarioDAO::crearUsuario($_POST['username'], $_POST['password'], $_POST['mail']);
                         $_SESSION['username'] = $_POST['username'];
                         header('Location: ./index.php');
                     }else{
@@ -67,11 +68,18 @@
             if(!isset($_SESSION['username'])){
                 header('Location: ./index.php?controller=UsuarioCON&action=login');
             }else{
-                $categorias     = CategoriaDAO::cargarCategorias();
-                $productos_fav  = favoritoDAO::cargarProductosFavoritosPorUsuario($_SESSION['username']);
-                $monedas        = monedaDAO::cargarMonedas();
+                $categorias = CategoriaDAO::cargarCategorias();
+                $usuario    = UsuarioDAO::datosUsuario($_SESSION['username']);
+                $monedas    = monedaDAO::cargarMonedas();
                 require_once('./view/miCuenta.php');
             }
+        }
+
+        function cambiarContrasenia(){
+            return UsuarioDAO::cambiarContrasenia($_SESSION['username'], $_POST['newPassword']);
+        }
+        function veficarContrasenia(){
+            echo(UsuarioDAO::existeUsuario($_SESSION['username'], $_POST['password'])) ;
         }
 
         function misCompras(){

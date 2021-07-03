@@ -40,7 +40,10 @@
                         
                         <div class="p-1 col-4<?php echo(($posicion > 2) ? ' mt-4' : ''); ?>" id="idProducto" > 
                         
-                            <h5 style="text-overflow: ellipsis;" id="nomPro" name="<?php echo($idPro);?>" usuario="<?php echo($usuario);?>" ><?php echo($nombrePro)?></h5>
+                            <div class="row">
+                                <div class="col-10"><h5 style="text-overflow: ellipsis;" id="nomPro" name="<?php echo($idPro);?>" usuario="<?php echo($usuario);?>" ><?php echo($nombrePro)?></h5></div>
+                                <?php echo( ($usuario != null) ? '<div class="col-2"><a class="add-favoritos" style="font-size: 20px;"><i class="bi bi-heart"></i></a></div>' : '') ?>
+                            </div>
 
                             <div class="precio-individual">
                                 <?php
@@ -108,7 +111,9 @@
 <!-- <script src="./public/js/producto.js"></script> -->
 <script src="./public/js/carrito.js"></script>
 <script src="./public/js/pedido.js"></script>
+<script src="./public/js/favorito.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./public/js/jquery-3.6.0.js"></script>
 </main>
 
 
