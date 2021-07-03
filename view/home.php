@@ -22,6 +22,7 @@
                         $cantTotal = sizeof($a_productos_nuevos);
                         foreach ($a_productos_nuevos as $key => $value) {
                             $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
+                            $url = "./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=$value->categoria?>";
                             $cant++;
                             if ($cant == 1) {
                 echo('<div class="carousel-item active">
@@ -30,10 +31,10 @@
                             }
                     ?>
                             <div class="card" style="max-width: 33% !important;">
-                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>">
+                                <a href="<?php echo($url);?>">
                                 <img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
-                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
+                                <a href="<?php echo($url);?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
 
                                 <div class="precio-individual">
@@ -90,6 +91,7 @@
                         $cantTotal = sizeof($a_productos_promo);
                         foreach ($a_productos_promo as $key => $value) {
                             $symPrecio = $monedas[intval($_SESSION['moneda'])-1]->monSimbolo;
+                            $url = "./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=$value->categoria?>";
                             $cant++;
                             if ($cant == 1) {
                 echo('<div class="carousel-item active">
@@ -98,9 +100,9 @@
                             }
                     ?>
                             <div class="card" style="max-width: 33% !important;">
-                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>"><img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="..."></a>
+                                <a href="<?php echo($url);?>"><img src="./public/img/img_productos/<?php echo($value->proNomImagen); ?>_220x220.jpg" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
-                                <a href="./index.php?controller=productoCON&action=verProductosPorCategoria&categoriaId=<?php echo($value->categoria); ?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
+                                <a href="<?php echo($url);?>" class="card-title" style="white-space:nowrap;"><?php echo($value->proNombre);?></a>
                                 <p class="card-text"><?php echo($value->proDescripcion);?></p>
 
                                 <div class="precio-individual">

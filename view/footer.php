@@ -78,7 +78,7 @@
                                     <ul>
                                         <li><a href="./index.php?controller=favoritoCON&action=favoritos">Favoritos</a></li>
                                         <li><a href="./index.php?controller=UsuarioCON&action=miCuenta">Mi Cuenta</a></li>
-                                        <li><a href="./index.php?controller=UsuarioCON&action=misCompras">Mis Compras</a></li>
+                                        <li><a href="./index.php?controller=compraCON&action=compraHis">Mis Compras</a></li>
                                     </ul>
                                 </li>
                             </ul>

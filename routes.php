@@ -9,12 +9,13 @@
     }
 
     $controllers = array('home'           => ['inicio', 'terycond', 'contacto', 'envios'],
-                         'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras'],
+                         'UsuarioCON'     => ['login', 'registrar', 'loginView', 'registrarView', 'cerrarsesion', 'miCuenta', 'favoritos', 'misCompras', 'cambiarContrasenia', 'veficarContrasenia'],
                          'oferta'         => ['ofertas'],
                          'productoCON'    => ['verProducto', 'verListaProductos', 'verProductosPorCategoria', 'verProductosFavoritos', 'verProductosFiltradosBusquda'],
                          'footer'         => ['agregarSub'],
                          'carritoCON'     => ['miCarrito', 'realizarCompra'],
-                         'favoritoCON'    => ['favoritos', 'favoritosOnly']
+                         'favoritoCON'    => ['favoritos', 'favoritosOnly', 'eliminarProductoCarrito', 'agregarProductoCarrito'],
+                         'compraCON'      => ['compraHis', 'compraHisOnly']
                         );
 
     if (array_key_exists($controller, $controllers)){

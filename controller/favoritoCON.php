@@ -26,6 +26,14 @@
                 require_once('./view/favoritosOnly.php');
             }
         }
+
+        function eliminarProductoCarrito(){
+            favoritoDAO::eliminarProductoCarrito($_SESSION['username'], $_POST['productoId']);
+        }
+
+        function agregarProductoCarrito(){
+            favoritoDAO::agregarProductoCarrito($_SESSION['username'], $_POST['productoId']);
+        }
     }
 
 
